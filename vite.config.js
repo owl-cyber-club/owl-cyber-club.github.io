@@ -1,12 +1,10 @@
-import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
+import { fileURLToPath, URL } from 'node:url';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 // https://vitejs.dev/config/
 export default defineConfig({
     base: '/', // GitHub Pages base path for user/org site
     plugins: [vue()],
-    publicDir: 'public', // Explicitly set to ensure .nojekyll is copied
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -19,4 +17,4 @@ export default defineConfig({
             }
         }
     }
-})
+});
