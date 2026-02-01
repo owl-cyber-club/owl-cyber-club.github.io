@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Hero from './components/Hero.vue'
+import HomePage from './components/HomePage.vue'
 </script>
 
 <template>
   <main class="main-container">
     <div class="grid-background"></div>
-    <Hero />
+    <HomePage />
   </main>
 </template>
 

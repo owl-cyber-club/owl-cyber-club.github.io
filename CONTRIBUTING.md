@@ -1,4 +1,10 @@
-### Commit Message Tags
+# Contributing Guidelines
+
+This document outlines the process for contributing to the OWL Cyber Club website codebase.
+
+## Commit Message Tags
+
+Please always append one of the following tags before your commit messages, depending on work done.  
 
 | Tag | Purpose | When to use it... |
 | --- | --- | --- |
@@ -14,4 +20,7 @@
 | **`chore`** | **Maintenance** | General tasks that don't modify `src` or `test` files (e.g., updating `.gitignore`). |
 | **`revert`** | **Undo** | When you need to roll back a previous commit. |
 
----
+## Commiting Policy
+
+- Don't commit tiny changes like fixing a typo, that will unnecessarily use our CI\CD (GitHub Pages) deployments (we only get 500 per month).
+- Commit a specific feature(s) or fix(es) at a time. One or two features and some fixes at a time are OK.

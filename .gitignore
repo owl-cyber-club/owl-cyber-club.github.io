@@ -20,3 +20,17 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# TypeScript build artifacts
+*.tsbuildinfo
+*.d.ts.map
+vite.config.d.ts
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
