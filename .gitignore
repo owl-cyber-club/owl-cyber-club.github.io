@@ -1,4 +1,4 @@
-# build output
+# Build artifacts
 dist/
 .vite/
 
@@ -10,6 +10,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
+logs
+*.log
 
 # environment variables
 .env
@@ -18,17 +21,26 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# jetbrains setting folder
+# Windows-specific files
+Thumbs.db
+desktop.ini
+
+# JetBrains IDE settings
 .idea/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
 
 # TypeScript build artifacts
 *.tsbuildinfo
 *.d.ts.map
 vite.config.d.ts
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+# Misc
+dist-ssr
+node_env/
+*.local
 *.suo
 *.ntvs*
 *.njsproj

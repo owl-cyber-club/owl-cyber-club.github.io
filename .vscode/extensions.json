@@ -1,5 +1,8 @@
 {
-    "recommendations": [
-        "Vue.volar"
-    ]
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "redhat.vscode-yaml",
+    "dbaeumer.vscode-eslint"
+  ],
+  "unwantedRecommendations": ["vscodevim.vim"]
 }
