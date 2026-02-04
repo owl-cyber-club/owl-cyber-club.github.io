@@ -1,5 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
+type Particle = { x: number; y: number; dx: number; dy: number; size: number };
+
+const PARTICLE_COUNT = 40;
+const PARTICLE_FILL = 'rgba(255, 255, 255, 0.05)';
+
 export const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -9,8 +14,7 @@ export const ParticleBackground: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let particles: { x: number; y: number; dx: number; dy: number; size: number }[] = [];
-    const particleCount = 40;
+    let particles: Particle[] = [];
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -19,7 +23,7 @@ export const ParticleBackground: React.FC = () => {
 
     const init = () => {
       particles = [];
-      for (let i = 0; i < particleCount; i++) {
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -32,7 +36,7 @@ export const ParticleBackground: React.FC = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'; // Very subtle
+      ctx.fillStyle = PARTICLE_FILL;
 
       particles.forEach((p) => {
         ctx.beginPath();
