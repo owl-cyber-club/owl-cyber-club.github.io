@@ -2,6 +2,8 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { Button } from './ui/Button';
 
+import { InteractiveStars } from './InteractiveStars';
+
 const HERO_STATS = [
   { label: 'Active Members', value: '150+' },
   { label: 'CTFs Won', value: '12' },
@@ -13,6 +15,7 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 grid-bg z-0" />
+      <InteractiveStars />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-cyber-yellow/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">

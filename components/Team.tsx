@@ -3,11 +3,47 @@ import { Card } from './ui/Card';
 import { Github, Twitter, Linkedin } from 'lucide-react';
 
 const TEAM_MEMBERS = [
-  { name: 'Alex Chen', role: 'President', image: 'https://picsum.photos/400/400?random=1' },
-  { name: 'Sarah Jones', role: 'Vice President', image: 'https://picsum.photos/400/400?random=2' },
-  { name: 'Mike Ross', role: 'Red Team Lead', image: 'https://picsum.photos/400/400?random=3' },
-  { name: 'Emily Blunt', role: 'Blue Team Lead', image: 'https://picsum.photos/400/400?random=4' },
-  { name: 'David Kim', role: 'Event Coordinator', image: 'https://picsum.photos/400/400?random=5' },
+  { 
+    name: 'Manohar Raavi', 
+    role: 'Advisor', 
+    image: '/ManoharRaavi.png',
+    linkedin: 'https://www.linkedin.com/in/manohar-raavi-8569a789/'
+  },
+  { 
+    name: 'Amrut Ramasamy', 
+    role: 'President', 
+    image: 'https://ui-avatars.com/api/?name=Amrut+Ramasamy&background=random',
+    github: 'https://github.com/NectarCoder',
+    linkedin: 'https://www.linkedin.com/in/amrutvyasa/'
+  },
+  { 
+    name: 'Lisa Thiongo', 
+    role: 'Vice President', 
+    image: 'https://ui-avatars.com/api/?name=Lisa+Thiongo&background=random',
+    github: 'https://github.com/LisaThiongo',
+    linkedin: 'https://www.linkedin.com/in/lisa-thiongo-b0b173240/'
+  },
+  { 
+    name: 'Sanketh Chapaneri', 
+    role: 'Secretary', 
+    image: '/sanketh.jpg',
+    github: 'https://github.com/DoNotDisturbs',
+    linkedin: 'https://www.linkedin.com/in/sanketh-chapaneri-a285761b8/'
+  },
+  { 
+    name: 'Christopher Forrester-Jack', 
+    role: 'Reservation Delegate', 
+    image: 'https://ui-avatars.com/api/?name=Christopher+Forrester-Jack&background=random',
+    github: 'https://github.com/CFJ200',
+    linkedin: 'https://www.linkedin.com/in/christopherforrester-jack/'
+  },
+  { 
+    name: 'Cassidie Grogan', 
+    role: 'Treasurer', 
+    image: '/Cassidie.png',
+    github: 'https://github.com/CGrogan4',
+    linkedin: 'https://www.linkedin.com/in/cassidie-grogan-62134127a/'
+  },
 ];
 
 export const Team: React.FC = () => {
@@ -31,9 +67,16 @@ export const Team: React.FC = () => {
               <p className="text-cyber-yellow text-sm font-mono mb-4">{member.role}</p>
               
               <div className="flex justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-                <a href="#" className="text-gray-400 hover:text-white"><Github size={18} /></a>
-                <a href="#" className="text-gray-400 hover:text-white"><Linkedin size={18} /></a>
-                <a href="#" className="text-gray-400 hover:text-white"><Twitter size={18} /></a>
+                {member.github && (
+                  <a href={member.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                    <Github size={18} />
+                  </a>
+                )}
+                {member.linkedin && (
+                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                    <Linkedin size={18} />
+                  </a>
+                )}
               </div>
             </Card>
           ))}
