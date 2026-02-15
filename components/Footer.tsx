@@ -4,7 +4,7 @@ export const Footer: React.FC = () => {
   return (
     <footer
       id="join"
-      className="py-12 border-t border-white/10 bg-black relative"
+      className="scroll-mt-20 py-12 border-t border-white/10 bg-black relative"
     >
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-24 bg-cyber-yellow/5 blur-[80px] pointer-events-none"></div>
 
