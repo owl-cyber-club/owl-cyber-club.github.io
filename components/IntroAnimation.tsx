@@ -23,6 +23,7 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
   const [glitchText, setGlitchText] = useState("OWL CYBER");
   const [progress, setProgress] = useState(0);
   const [glitchSeed, setGlitchSeed] = useState(0);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   const progressBlocks = 48;
   const filledBlocks = Math.round((progress / 100) * progressBlocks);
@@ -90,6 +91,23 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
 
     return () => clearInterval(interval);
   }, [step]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+    const handleMediaChange = (event: MediaQueryListEvent) => {
+      setIsMobileView(event.matches);
+    };
+
+    setIsMobileView(mediaQuery.matches);
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleMediaChange);
+      return () => mediaQuery.removeEventListener("change", handleMediaChange);
+    }
+
+    mediaQuery.addListener(handleMediaChange);
+    return () => mediaQuery.removeListener(handleMediaChange);
+  }, []);
 
   // Glitch effect logic for logo reveal
   useEffect(() => {
@@ -196,6 +214,11 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
       transition: { duration: 1.5, ease: "easeInOut" },
     },
   };
+
+  const introLogoSize = isMobileView ? "12rem" : "16rem";
+  const navbarLogoLeft = isMobileView
+    ? "1.5rem"
+    : "max(1.5rem, calc(50vw - 40rem + 1.5rem))";
 
   return (
     <AnimatePresence>
@@ -363,7 +386,7 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                     step === "shrink" || step === "fade"
                       ? {
                           top: "1.25rem", // 20px (centered in 80px navbar)
-                          left: "max(1.5rem, calc(50vw - 40rem + 1.5rem))", // Handles both mobile padding (1.5rem) and centered container logic
+                          left: navbarLogoLeft, // Handles mobile padding and centered container logic
                           x: "0%",
                           y: "0%",
                           scale: 1,
@@ -433,16 +456,16 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                     <motion.img
                       src="/logo.png"
                       alt="Owl Cyber Club"
-                      className="object-contain rounded-full relative z-20"
+                      className="block object-contain rounded-full relative z-20"
                       animate={{
                         width:
                           step === "shrink" || step === "fade"
                             ? "2.5rem"
-                            : "16rem",
+                            : introLogoSize,
                         height:
                           step === "shrink" || step === "fade"
                             ? "2.5rem"
-                            : "16rem",
+                            : introLogoSize,
                         filter:
                           step === "logo" || step === "glitch"
                             ? [
@@ -454,13 +477,13 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                       }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                     />
-                    {(step === "glitch" || step === "logo") && (
+                    {(step === "glitch" || step === "logo") && !isMobileView && (
                       <>
                         <motion.img
                           src="/logo.png"
                           alt=""
                           aria-hidden="true"
-                          className="object-contain rounded-full absolute inset-0 z-10 opacity-20"
+                          className="absolute inset-0 z-10 w-full h-full object-contain rounded-full opacity-20"
                           animate={{
                             x: [-2, 2, -1],
                             y: [1, -1, 0],
@@ -476,7 +499,7 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                           src="/logo.png"
                           alt=""
                           aria-hidden="true"
-                          className="object-contain rounded-full absolute inset-0 z-10 opacity-15 mix-blend-screen"
+                          className="absolute inset-0 z-10 w-full h-full object-contain rounded-full opacity-15 mix-blend-screen"
                           animate={{
                             x: [2, -2, 1],
                             y: [-1, 1, 0],

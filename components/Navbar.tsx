@@ -83,7 +83,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  if (link.name === "Join" && onJoinClick) {
+                    onJoinClick();
+                  }
+                  if (link.name === "Join") {
+                    setTimeout(() => setMobileMenuOpen(false), 120);
+                  } else {
+                    setMobileMenuOpen(false);
+                  }
+                }}
                 className="text-gray-300 hover:text-cyber-yellow block py-2"
               >
                 {link.name}
