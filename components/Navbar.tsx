@@ -9,7 +9,11 @@ const NAV_LINKS = [
   { name: "Join", href: "#join" },
 ];
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onJoinClick?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -35,7 +39,7 @@ export const Navbar: React.FC = () => {
               className="h-10 w-10 relative z-10"
             />
           </div>
-          <div className="text-xl font-bold tracking-tighter text-white">
+          <div className="text-xl font-bold font-mono tracking-tighter text-white">
             OWL<span className="text-cyber-yellow">CYBER</span>
           </div>
         </a>
@@ -53,6 +57,11 @@ export const Navbar: React.FC = () => {
           ))}
           <a
             href="#join"
+            onClick={(e) => {
+              if (onJoinClick) {
+                onJoinClick();
+              }
+            }}
             className="px-5 py-2 bg-cyber-yellow text-black font-bold rounded hover:bg-yellow-400 transition-colors shadow-lg shadow-cyber-yellow/20"
           >
             Join the Club
