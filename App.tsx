@@ -16,8 +16,8 @@ function App() {
       <main>
         <Hero />
         <Features />
-        <Team />
         <Events />
+        <Team />
       </main>
       <Footer />
     </div>

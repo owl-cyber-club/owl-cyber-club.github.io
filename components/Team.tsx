@@ -4,12 +4,6 @@ import { Github, Twitter, Linkedin } from 'lucide-react';
 
 const TEAM_MEMBERS = [
   { 
-    name: 'Manohar Raavi', 
-    role: 'Advisor', 
-    image: '/ManoharRaavi.png',
-    linkedin: 'https://www.linkedin.com/in/manohar-raavi-8569a789/'
-  },
-  { 
     name: 'Amrut Ramasamy', 
     role: 'President', 
     image: 'https://ui-avatars.com/api/?name=Amrut+Ramasamy&background=random',
@@ -44,6 +38,12 @@ const TEAM_MEMBERS = [
     github: 'https://github.com/CGrogan4',
     linkedin: 'https://www.linkedin.com/in/cassidie-grogan-62134127a/'
   },
+  { 
+    name: 'Dr. Manohar Raavi', 
+    role: 'Advisor', 
+    image: '/ManoharRaavi.png',
+    linkedin: 'https://www.linkedin.com/in/manohar-raavi-8569a789/'
+  },
 ];
 
 export const Team: React.FC = () => {
@@ -55,7 +55,7 @@ export const Team: React.FC = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <h2 className="text-3xl font-bold text-white mb-12">Meet the Core</h2>
+        <h2 className="text-3xl font-bold text-white mb-12">The Exec Team</h2>
         
         <div className="flex flex-wrap justify-center gap-8">
           {TEAM_MEMBERS.map((member, idx) => (
