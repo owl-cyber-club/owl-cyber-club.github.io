@@ -24,11 +24,12 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
   const [progress, setProgress] = useState(0);
   const [glitchSeed, setGlitchSeed] = useState(0);
   const [isMobileView, setIsMobileView] = useState(false);
+  const [showSkipButton, setShowSkipButton] = useState(false);
 
   const progressBlocks = 48;
   const filledBlocks = Math.round((progress / 100) * progressBlocks);
-  const showLogoGlitchStreaks = step === "glitch" || step === "logo";
-  const glitchStreakCount = 10;
+  const showLogoGlitchStreaks = step === "glitch";
+  const glitchStreakCount = 6;
 
   // Boot sequence logic with proper state management and progress tracking
   useEffect(() => {
@@ -220,17 +221,63 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
     ? "1.5rem"
     : "max(1.5rem, calc(50vw - 40rem + 1.5rem))";
 
+  const skipIntro = () => {
+    setStep((prev) => (prev === "fade" ? prev : "fade"));
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSkipButton(true);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        skipIntro();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (step !== "logo") return;
+
+    const timer = setTimeout(() => {
+      setShowSkipButton(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [step]);
+
   return (
     <AnimatePresence>
-      {step !== "fade" && ( // Keep rendering until fade is done? No, step 'fade' just fades bg.
-        <motion.div
-          key="intro"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050505] overflow-hidden"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: step === "fade" ? 0 : 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
-        >
+      <motion.div
+        key="intro"
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050505] overflow-hidden"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: step === "fade" ? 0 : 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+          {showSkipButton && (step === "boot" || step === "glitch" || step === "logo") && (
+            <motion.button
+              type="button"
+              onClick={skipIntro}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute top-4 left-4 sm:top-6 sm:left-6 z-[120] px-3 py-1.5 rounded border border-cyber-yellow/60 bg-black/70 text-cyber-yellow font-mono text-xs sm:text-sm tracking-wide hover:bg-cyber-yellow hover:text-black transition-colors"
+              aria-label="Skip intro animation"
+              title="Skip intro (Esc)"
+            >
+              ESC • SKIP
+            </motion.button>
+          )}
           {/* Matrix/Glitch Background Effect - Optional subtle grid */}
           <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,0,0.03)_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)] pointer-events-none"></div>
           <motion.div
@@ -242,17 +289,6 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                 "repeating-linear-gradient(to bottom, rgba(255,255,255,0.09) 0px, rgba(255,255,255,0.09) 1px, transparent 1px, transparent 3px)",
             }}
           />
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            animate={{ opacity: [0.02, 0.08, 0.03, 0.1, 0.02] }}
-            transition={{ duration: 0.25, repeat: Infinity, ease: "linear" }}
-            style={{
-              mixBlendMode: "screen",
-              background:
-                "radial-gradient(circle at 20% 20%, rgba(255, 0, 80, 0.12) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.08) 0%, transparent 45%)",
-            }}
-          />
-
           {showLogoGlitchStreaks && (
             <div className="absolute inset-0 pointer-events-none z-30 overflow-hidden">
               {Array.from({ length: glitchStreakCount }).map((_, index) => {
@@ -265,11 +301,7 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                       top: `${(index * 100) / glitchStreakCount + (offset % 9) - 4}%`,
                       height: `${2 + (index % 3) * 2}px`,
                       background:
-                        index % 3 === 0
-                          ? "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.58) 45%, transparent 100%)"
-                          : index % 2 === 0
-                            ? "linear-gradient(90deg, transparent 0%, rgba(0,255,255,0.45) 50%, transparent 100%)"
-                            : "linear-gradient(90deg, transparent 0%, rgba(255,0,90,0.42) 50%, transparent 100%)",
+                        "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.58) 50%, transparent 100%)",
                       mixBlendMode: "screen",
                     }}
                     animate={{
@@ -477,38 +509,6 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                       }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                     />
-                    {(step === "glitch" || step === "logo") && !isMobileView && (
-                      <>
-                        <motion.img
-                          src="/logo.png"
-                          alt=""
-                          aria-hidden="true"
-                          className="absolute inset-0 z-10 w-full h-full object-contain rounded-full opacity-20"
-                          animate={{
-                            x: [-2, 2, -1],
-                            y: [1, -1, 0],
-                            filter: [
-                              "hue-rotate(0deg)",
-                              "hue-rotate(28deg)",
-                              "hue-rotate(-16deg)",
-                            ],
-                          }}
-                          transition={{ duration: 0.22, repeat: Infinity, ease: "linear" }}
-                        />
-                        <motion.img
-                          src="/logo.png"
-                          alt=""
-                          aria-hidden="true"
-                          className="absolute inset-0 z-10 w-full h-full object-contain rounded-full opacity-15 mix-blend-screen"
-                          animate={{
-                            x: [2, -2, 1],
-                            y: [-1, 1, 0],
-                            opacity: [0.12, 0.22, 0.14],
-                          }}
-                          transition={{ duration: 0.18, repeat: Infinity, ease: "linear" }}
-                        />
-                      </>
-                    )}
                   </motion.div>
                 </motion.div>
 
@@ -532,10 +532,6 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                   >
                     <h1
                       className="text-4xl md:text-6xl font-bold font-mono tracking-wider text-white relative whitespace-nowrap"
-                      style={{
-                        filter:
-                          "drop-shadow(2px 0 0 rgba(255,0,80,0.45)) drop-shadow(-2px 0 0 rgba(0,255,255,0.45))",
-                      }}
                     >
                       <span className="text-cyber-yellow">{glitchText}</span>
                     </h1>
@@ -544,8 +540,7 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
               </>
             )}
           </div>
-        </motion.div>
-      )}
+      </motion.div>
     </AnimatePresence>
   );
 };
