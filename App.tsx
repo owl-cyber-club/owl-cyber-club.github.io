@@ -1,12 +1,12 @@
-import React from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Features } from './components/Features';
+import React from "react";
+import { Navbar } from "./components/Navbar";
+import { Hero } from "./components/Hero";
+import { Features } from "./components/Features";
 
-import { Team } from './components/Team';
-import { Events } from './components/Events';
-import { Footer } from './components/Footer';
-import { ParticleBackground } from './components/ParticleBackground';
+import { Team } from "./components/Team";
+import { Events } from "./components/Events";
+import { Footer } from "./components/Footer";
+import { ParticleBackground } from "./components/ParticleBackground";
 
 function App() {
   return (

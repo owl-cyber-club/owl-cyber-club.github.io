@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 interface Star {
   x: number;
@@ -21,7 +21,7 @@ export const InteractiveStars: React.FC = () => {
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let stars: Star[] = [];
@@ -54,10 +54,10 @@ export const InteractiveStars: React.FC = () => {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-        // Calculate mouse position relative to the center of the viewport for parallax
-        const x = (e.clientX - window.innerWidth / 2) * 0.05; // Sensitivity factor
-        const y = (e.clientY - window.innerHeight / 2) * 0.05;
-        mouseRef.current = { x, y };
+      // Calculate mouse position relative to the center of the viewport for parallax
+      const x = (e.clientX - window.innerWidth / 2) * 0.05; // Sensitivity factor
+      const y = (e.clientY - window.innerHeight / 2) * 0.05;
+      mouseRef.current = { x, y };
     };
 
     const animate = () => {
@@ -73,7 +73,7 @@ export const InteractiveStars: React.FC = () => {
 
         // Movement reaction (Parallax opposite to mouse)
         // Stars closer to screen (larger) move more
-        const moveFactor = star.size * 2; 
+        const moveFactor = star.size * 2;
         const targetX = star.baseX - mouseX * moveFactor;
         const targetY = star.baseY - mouseY * moveFactor;
 
@@ -91,19 +91,22 @@ export const InteractiveStars: React.FC = () => {
     };
 
     resize();
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", handleMouseMove);
     animate();
 
     return () => {
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+    <div
+      ref={containerRef}
+      className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+    >
       <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );

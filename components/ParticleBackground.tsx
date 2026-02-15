@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 
 type Particle = { x: number; y: number; dx: number; dy: number; size: number };
 
 const PARTICLE_COUNT = 40;
-const PARTICLE_FILL = 'rgba(255, 255, 255, 0.05)';
+const PARTICLE_FILL = "rgba(255, 255, 255, 0.05)";
 
 export const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -11,7 +11,7 @@ export const ParticleBackground: React.FC = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let particles: Particle[] = [];
@@ -59,9 +59,11 @@ export const ParticleBackground: React.FC = () => {
     init();
     animate();
 
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />;
+  return (
+    <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />
+  );
 };

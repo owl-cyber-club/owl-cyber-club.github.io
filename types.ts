@@ -12,14 +12,14 @@ export interface Member {
 export interface Event {
   title: string;
   date: string;
-  type: 'Workshop' | 'CTF' | 'Social' | 'Competition';
+  type: "Workshop" | "CTF" | "Social" | "Competition";
   description: string;
 }
 
 export enum ImageSize {
   OneK = "1K",
   TwoK = "2K",
-  FourK = "4K"
+  FourK = "4K",
 }
 
 export interface GeminiImageState {
