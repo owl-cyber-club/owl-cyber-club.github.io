@@ -5,10 +5,10 @@ import { Button } from "./ui/Button";
 import { InteractiveStars } from "./InteractiveStars";
 
 const HERO_STATS = [
-  { label: "Active Members", value: "150+" },
-  { label: "CTFs Won", value: "12" },
+  { label: "Active Members", value: "90+" },
+  { label: "Hands-on Workshops", value: "20+" },
   { label: "Weekly Sessions", value: "2" },
-  { label: "Industry Partners", value: "5+" },
+  { label: "Industry Partners", value: "3+" },
 ];
 
 export const Hero: React.FC = () => {
@@ -33,17 +33,14 @@ export const Hero: React.FC = () => {
         </a>
 
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-tight">
-          Secure the{" "}
+          Welcome to <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-yellow to-yellow-600">
-            Future.
-          </span>{" "}
-          <br />
-          Defend the <span className="text-gray-500">Network.</span>
+            OWL Cyber Club
+          </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Join the elite community of ethical hackers, security researchers, and
-          cyber enthusiasts. Master the art of defense through offense.
+        <p className="text-xl md:text-2l text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
+          Empowering the next generation of cyber defenders through hands-on learning, community support, and innovative security solutions.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
