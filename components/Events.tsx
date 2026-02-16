@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, MapPin, Clock } from "lucide-react";
+import { Calendar, MapPin, Clock, ExternalLink } from "lucide-react";
 import { CLUB_EVENTS } from "../data/events";
 
 interface EventsProps {
@@ -44,11 +44,8 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
         <div className="space-y-4">
           {upcomingEvents.map((event, idx) => {
             const { day, month } = formatDate(event.date);
-            return (
-              <div
-                key={idx}
-                className="group relative bg-zinc-900/50 hover:bg-zinc-900 border border-white/5 rounded-xl p-6 transition-all duration-300 overflow-hidden"
-              >
+            const CardContent = (
+              <>
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-cyber-yellow opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -71,7 +68,7 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-6 text-sm text-gray-400">
+                  <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-gray-400">
                     <div className="flex items-center gap-2">
                       <Clock size={14} />
                       {event.time}
@@ -82,6 +79,28 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
                     </div>
                   </div>
                 </div>
+              </>
+            );
+
+            const containerClass = "group relative bg-zinc-900/50 hover:bg-zinc-900 border border-white/5 rounded-xl p-6 transition-all duration-300 overflow-hidden block w-full text-left";
+
+            if (event.link) {
+              return (
+                <a 
+                  key={idx}
+                  href={event.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={containerClass}
+                >
+                  {CardContent}
+                </a>
+              );
+            }
+
+            return (
+              <div key={idx} className={containerClass}>
+                {CardContent}
               </div>
             );
           })}

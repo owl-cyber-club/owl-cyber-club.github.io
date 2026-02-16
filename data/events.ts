@@ -6,7 +6,8 @@ export const CLUB_EVENTS: Event[] = [
     date: "2026-02-16",
     time: "5:00 PM - 6:00 PM",
     location: "Teams",
-    type: "Workshop"
+    type: "Workshop",
+    link: "https://teams.microsoft.com/meet/2618977480954?p=bAFv5KgvB8hs5abmtl"
   },
   {
     title: "Capture the Flag (CTF)",

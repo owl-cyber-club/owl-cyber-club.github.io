@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, X, Calendar as CalendarIcon, MapPin, Clock, ArrowLeft } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Calendar as CalendarIcon, MapPin, Clock, ArrowLeft, ExternalLink } from "lucide-react";
 import { CLUB_EVENTS } from "../data/events";
 import { Event } from "../types";
 
@@ -197,6 +197,18 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                         <p className="text-gray-400 text-sm leading-relaxed bg-white/5 p-3 rounded-lg border border-white/5">
                           {e.description}
                         </p>
+                      )}
+
+                      {e.link && (
+                        <a 
+                          href={e.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2 bg-cyber-yellow hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-cyber-yellow/20 text-sm"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          <span>Join Meeting</span>
+                        </a>
                       )}
                     </div>
                   ))}

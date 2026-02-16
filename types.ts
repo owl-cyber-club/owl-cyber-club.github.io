@@ -16,6 +16,7 @@ export interface Event {
   location: string;
   type: "Workshop" | "CTF" | "Social" | "Competition";
   description?: string;
+  link?: string;
 }
 
 export enum ImageSize {
