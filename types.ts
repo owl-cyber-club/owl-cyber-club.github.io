@@ -19,14 +19,3 @@ export interface Event {
   link?: string;
 }
 
-export enum ImageSize {
-  OneK = "1K",
-  TwoK = "2K",
-  FourK = "4K",
-}
-
-export interface GeminiImageState {
-  loading: boolean;
-  error: string | null;
-  imageUrl: string | null;
-}
