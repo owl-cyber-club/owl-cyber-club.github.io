@@ -11,9 +11,11 @@ export interface Member {
 
 export interface Event {
   title: string;
-  date: string;
+  date: string; // Format: "YYYY-MM-DD" for calendar logic
+  time: string;
+  location: string;
   type: "Workshop" | "CTF" | "Social" | "Competition";
-  description: string;
+  description?: string;
 }
 
 export enum ImageSize {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { Features } from "./components/Features";
@@ -8,9 +9,11 @@ import { Footer } from "./components/Footer";
 import { Contact } from "./components/Contact";
 import { ParticleBackground } from "./components/ParticleBackground";
 import IntroAnimation from "./components/IntroAnimation";
+import { CalendarView } from "./components/CalendarView";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [showCalendar, setShowCalendar] = useState(false);
   const [highlightJoinLinks, setHighlightJoinLinks] = useState(false);
 
   const handleJoinClick = () => {
@@ -29,11 +32,17 @@ function App() {
       <main>
         <Hero />
         <Features />
-        <Events />
+        <Events onViewCalendar={() => setShowCalendar(true)} />
         <Team />
-        <Contact />
+        <Contact onViewCalendar={() => setShowCalendar(true)} />
       </main>
       <Footer highlightJoinLinks={highlightJoinLinks} />
+      
+      <AnimatePresence>
+        {showCalendar && (
+          <CalendarView onClose={() => setShowCalendar(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
