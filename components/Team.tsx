@@ -19,7 +19,7 @@ const TEAM_MEMBERS = [
   { 
     name: 'Lisa Thiongo', 
     role: 'Vice President', 
-    image: 'https://ui-avatars.com/api/?name=Lisa+Thiongo&background=random',
+    image: '/Lisa.png',
     github: 'https://github.com/LisaThiongo',
     linkedin: 'https://www.linkedin.com/in/lisa-thiongo-b0b173240/'
   },
