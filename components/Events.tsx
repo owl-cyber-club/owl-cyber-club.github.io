@@ -4,17 +4,17 @@ import { Calendar, MapPin, Clock } from "lucide-react";
 export const Events: React.FC = () => {
   const events = [
     {
-      title: "Intro to Kali Linux",
-      date: "Oct 15",
-      time: "6:00 PM",
-      location: "Discord",
+      title: "Intro to WireShark",
+      date: "Feb 16",
+      time: "5:00 PM - 6:00 PM",
+      location: "Teams",
       type: "Workshop",
     },
     {
-      title: "Midnight CTF Qualifiers",
-      date: "Oct 22",
-      time: "8:00 PM",
-      location: "Online",
+      title: "Capture the Flag (CTF)",
+      date: "Apr 17",
+      time: "1:00 PM - 5:00 PM",
+      location: "Kennesaw Campus(ALC 1202) ",
       type: "Competition",
     },
     {

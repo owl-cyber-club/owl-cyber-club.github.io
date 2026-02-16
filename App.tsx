@@ -5,6 +5,7 @@ import { Features } from "./components/Features";
 import { Team } from "./components/Team";
 import { Events } from "./components/Events";
 import { Footer } from "./components/Footer";
+import { Contact } from "./components/Contact";
 import { ParticleBackground } from "./components/ParticleBackground";
 import IntroAnimation from "./components/IntroAnimation";
 
@@ -30,6 +31,7 @@ function App() {
         <Features />
         <Events />
         <Team />
+        <Contact />
       </main>
       <Footer highlightJoinLinks={highlightJoinLinks} />
     </div>

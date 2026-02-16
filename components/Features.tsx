@@ -5,40 +5,34 @@ import { Shield, Cpu, Users, Globe, Trophy, Code } from "lucide-react";
 export const Features: React.FC = () => {
   const features = [
     {
-      icon: <Trophy className="w-6 h-6 text-cyber-yellow" />,
-      title: "Competitive CTFs",
-      description:
-        "Participate in global Capture The Flag competitions. Pwn boxes, crack codes, and climb the leaderboard.",
-    },
-    {
       icon: <Cpu className="w-6 h-6 text-cyber-yellow" />,
-      title: "Virtual Labs",
+      title: "Workshops and Training",
       description:
-        "Hands-on experience with Kali Linux, Metasploit, and Wireshark in our safe, isolated virtual environments.",
+        "Participate in hands-on workshops and training sessions led by industry experts and experienced peers. Whether you're a beginner or looking to sharpen your skills, we have something for everyone.",
     },
     {
       icon: <Users className="w-6 h-6 text-cyber-yellow" />,
-      title: "Networking",
+      title: "Networking Opportunities",
       description:
-        "Connect with industry professionals, alumni, and like-minded peers to fast-track your cybersecurity career.",
+        "Connect with professionals, alumni, and fellow students who share your passion for cybersecurity. Our events and meetups are designed to help you build valuable relationships and learn from those who have walked the path before you.",
+    },
+    {
+      icon: <Trophy className="w-6 h-6 text-cyber-yellow" />,
+      title: "Competitions and Challenges",
+      description:
+        "Test your skills and knowledge by taking part in cybersecurity competitions and challenges. These events are not only a great way to apply what you've learned but also to gain recognition and potential opportunities in the field.",
     },
     {
       icon: <Globe className="w-6 h-6 text-cyber-yellow" />,
-      title: "Global Community",
+      title: "Resource Sharing",
       description:
-        "Access our Discord and Teams channels 24/7. Collaborate on projects and share threat intel.",
+        "Access a wealth of resources, including study materials, toolkits, and industry news. Stay informed about the latest trends and technologies in cybersecurity.",
     },
     {
       icon: <Shield className="w-6 h-6 text-cyber-yellow" />,
-      title: "Blue Team Defense",
+      title: "Community Support",
       description:
-        "Learn how to harden systems, analyze logs, and respond to incidents in real-time simulations.",
-    },
-    {
-      icon: <Code className="w-6 h-6 text-cyber-yellow" />,
-      title: "Secure Coding",
-      description:
-        "Workshops on writing secure code, understanding OWASP Top 10, and preventing vulnerabilities.",
+        "Join a community of like-minded individuals who are committed to supporting each other's growth. Our club is a place where you can share ideas, ask questions, and collaborate on projects.",
     },
   ];
 
@@ -46,10 +40,10 @@ export const Features: React.FC = () => {
     <section id="divisions" className="scroll-mt-20 py-24 relative bg-black">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-white mb-4">Our Divisions</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">What We Offer</h2>
           <p className="text-gray-400 max-w-2xl">
-            Whether you're into Red Teaming, Blue Teaming, or GRC, we have a
-            specialized track for you.
+            Explore the various ways our club supports your journey in
+            cybersecurity.
           </p>
         </div>
 
