@@ -30,7 +30,7 @@ export const Contact: React.FC = () => {
                 </div>
               </a>
               <a 
-                href="https://discord.gg/EEEcfHQbKC"
+                href="https://discord.com/channels/1414712346336690256/1418237588115947540"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyber-yellow/50 transition-all hover:bg-white/10 group block"
