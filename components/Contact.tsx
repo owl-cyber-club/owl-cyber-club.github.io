@@ -17,24 +17,32 @@ export const Contact: React.FC = () => {
               at our next meeting!
             </p>
             <div className="space-y-4">
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyber-yellow/50 transition-colors">
+              <a 
+                href="#events"
+                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyber-yellow/50 transition-all hover:bg-white/10 group block"
+              >
                 <div className="p-2 rounded-lg bg-cyber-yellow/10">
                   <Calendar className="w-5 h-5 text-cyber-yellow" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">Upcoming Events</h3>
+                  <h3 className="text-white font-semibold group-hover:text-cyber-yellow transition-colors">Upcoming Events</h3>
                   <p className="text-sm text-gray-500">Stay updated with our latest workshops</p>
                 </div>
-              </div>
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyber-yellow/50 transition-colors">
+              </a>
+              <a 
+                href="https://discord.gg/EEEcfHQbKC"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyber-yellow/50 transition-all hover:bg-white/10 group block"
+              >
                 <div className="p-2 rounded-lg bg-cyber-yellow/10">
                   <MessageSquare className="w-5 h-5 text-cyber-yellow" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">Discussion Forums</h3>
+                  <h3 className="text-white font-semibold group-hover:text-cyber-yellow transition-colors">Discussion Forums</h3>
                   <p className="text-sm text-gray-500">Collaborate and share ideas with peers</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 

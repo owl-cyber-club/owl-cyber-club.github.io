@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, ExternalLink } from "lucide-react";
 import { OwlLifeModal } from "./OwlLifeModal";
 
+
 interface FooterProps {
   highlightJoinLinks?: boolean;
 }
@@ -168,6 +169,8 @@ export const Footer: React.FC<FooterProps> = ({
                 />
               </>
             )}
+            {/* Shimmer effect on hover */}
+            <div className={`absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 pointer-events-none group-hover:translate-x-[400%] transition-transform duration-1000 ${highlightJoinLinks ? 'hidden' : ''}`} />
             <div className="p-1.5 bg-cyber-yellow/20 rounded-lg group-hover:bg-black/20 transition-colors">
               <ShieldCheck className="w-5 h-5 text-cyber-yellow group-hover:text-black transition-colors" />
             </div>

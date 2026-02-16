@@ -14,14 +14,14 @@ export const Events: React.FC = () => {
       title: "Capture the Flag (CTF)",
       date: "Apr 17",
       time: "1:00 PM - 5:00 PM",
-      location: "Kennesaw Campus(ALC 1202) ",
+      location: "Kennesaw Campus(ALC 1202)",
       type: "Competition",
     },
     {
       title: "Industry Night: Red Hat",
-      date: "Nov 01",
-      time: "5:30 PM",
-      location: "Student Union",
+      date: "TBD",
+      time: "TBD",
+      location: "TBD",
       type: "Social",
     },
   ];
@@ -34,7 +34,12 @@ export const Events: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6">
         <div className="flex items-baseline justify-between mb-12">
           <h2 className="text-3xl font-bold text-white">Upcoming Events</h2>
-          <a href="#" className="text-sm text-cyber-yellow hover:underline">
+          <a 
+            href="https://owllife.kennesaw.edu/organization/owlcyberclub/events" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-cyber-yellow hover:underline"
+          >
             View Calendar &rarr;
           </a>
         </div>
