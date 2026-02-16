@@ -1,9 +1,15 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth bg-[#050505]">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Owl Cyber Club</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="theme-color" content="#050505" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -58,6 +64,12 @@
         background-color: #050505;
         color: #fff;
         font-family: "Inter", sans-serif;
+        overflow-x: hidden;
+      }
+      html {
+        color-scheme: dark;
+        scrollbar-width: thin;
+        scrollbar-color: #333 #050505;
       }
       .grid-bg {
         background-size: 50px 50px;
@@ -90,6 +102,34 @@
       }
       ::-webkit-scrollbar-thumb:hover {
         background: #555;
+      }
+
+      .text-shadow-glitch {
+        text-shadow:
+          2px 0 rgba(255, 0, 0, 0.5),
+          -2px 0 rgba(0, 255, 255, 0.5);
+        animation: glitch-skew 1s infinite linear alternate-reverse;
+      }
+
+      @keyframes glitch-skew {
+        0% {
+          transform: skew(0deg);
+        }
+        20% {
+          transform: skew(-2deg);
+        }
+        40% {
+          transform: skew(2deg);
+        }
+        60% {
+          transform: skew(0deg);
+        }
+        80% {
+          transform: skew(1deg);
+        }
+        100% {
+          transform: skew(0deg);
+        }
       }
     </style>
     <script type="importmap">
