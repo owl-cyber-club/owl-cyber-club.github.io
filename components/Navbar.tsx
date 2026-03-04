@@ -33,15 +33,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
           <div className="relative">
-            <div className="absolute inset-0 bg-cyber-yellow/20 rounded-full blur-md group-hover:blur-lg transition-all"></div>
+            <div className="absolute inset-0 bg-cyber-yellow/40 rounded-full blur-md group-hover:blur-xl group-hover:bg-cyber-yellow/50 transition-all"></div>
             <img
               src="/logo.png"
               alt="Owl Cyber Club"
               className="h-10 w-10 relative z-10 rounded-full"
             />
           </div>
-          <div className="text-xl font-bold font-mono tracking-tighter text-white">
-            OWL<span className="text-cyber-yellow">CYBER</span>
+          <div className="text-xl font-bold font-mono tracking-tighter text-white [text-shadow:0_0_8px_rgba(255,255,255,0.3)]">
+            OWL
+            <span className="text-cyber-yellow [text-shadow:0_0_8px_rgba(255,215,0,0.5)]">
+              CYBER
+            </span>
           </div>
         </a>
 
