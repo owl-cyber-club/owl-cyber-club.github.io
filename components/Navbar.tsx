@@ -3,9 +3,9 @@ import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { name: "Home", href: "#" },
-  { name: "Divisions", href: "#divisions" },
   { name: "About", href: "#about" },
   { name: "Events", href: "#events" },
+  { name: "Staff", href: "#staff" },
   { name: "Contact", href: "#contact" },
   { name: "Join", href: "#join" },
 ];
@@ -37,7 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
             <img
               src="/logo.png"
               alt="Owl Cyber Club"
-              className="h-10 w-10 relative z-10"
+              className="h-10 w-10 relative z-10 rounded-full"
             />
           </div>
           <div className="text-xl font-bold font-mono tracking-tighter text-white">

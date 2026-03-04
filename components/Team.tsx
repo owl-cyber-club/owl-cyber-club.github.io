@@ -27,8 +27,7 @@ const TEAM_MEMBERS = [
   {
     name: "Christopher Forrester-Jack",
     role: "Reservation Delegate",
-    image:
-      "/CFJ.png",
+    image: "/CFJ.png",
     github: "https://github.com/CFJ200",
     linkedin: "https://www.linkedin.com/in/christopherforrester-jack/",
   },
@@ -49,7 +48,7 @@ const TEAM_MEMBERS = [
 
 export const Team: React.FC = () => {
   return (
-    <section id="about" className="scroll-mt-20 py-24 relative overflow-hidden">
+    <section id="staff" className="scroll-mt-20 py-24 relative overflow-hidden">
       <div className="absolute right-0 top-1/4 w-1/2 h-full opacity-10 pointer-events-none">
         <div className="w-full h-8 bg-cyber-yellow transform -skew-x-12 mb-8 blur-3xl"></div>
         <div className="w-2/3 h-8 bg-white transform -skew-x-12 mb-8 blur-3xl ml-auto"></div>

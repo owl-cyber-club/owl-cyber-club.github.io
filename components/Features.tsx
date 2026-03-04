@@ -34,10 +34,16 @@ export const Features: React.FC = () => {
       description:
         "Join a community of like-minded individuals who are committed to supporting each other's growth. Our club is a place where you can share ideas, ask questions, and collaborate on projects.",
     },
+    {
+      icon: <Code className="w-6 h-6 text-cyber-yellow" />,
+      title: "Real-World Projects",
+      description:
+        "Collaborate on exciting cybersecurity projects, hack on open-source tools, and tackle realistic scenarios to build an impressive portfolio of practical experience.",
+    },
   ];
 
   return (
-    <section id="divisions" className="scroll-mt-20 py-24 relative bg-black">
+    <section id="about" className="scroll-mt-20 py-24 relative bg-black">
       <div className="max-w-6xl mx-auto px-6">
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-white mb-4">What We Offer</h2>

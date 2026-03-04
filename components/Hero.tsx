@@ -3,12 +3,19 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "./ui/Button";
 
 import { InteractiveStars } from "./InteractiveStars";
+import { CLUB_EVENTS } from "../data/events";
+
+const currentYear = new Date().getFullYear();
+const sessionsThisYear = CLUB_EVENTS.filter((e) => {
+  if (e.date === "TBD") return false;
+  const date = new Date(e.date + "T12:00:00");
+  return date.getFullYear() === currentYear;
+}).length;
 
 const HERO_STATS = [
   { label: "Active Members", value: "90+" },
   { label: "Hands-on Workshops", value: "20+" },
-  { label: "Weekly Sessions", value: "2" },
-  { label: "Industry Partners", value: "3+" },
+  { label: `Sessions this year`, value: sessionsThisYear.toString() },
 ];
 
 export const Hero: React.FC = () => {
@@ -40,7 +47,9 @@ export const Hero: React.FC = () => {
         </h1>
 
         <p className="text-xl md:text-2l text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
-          Empowering the next generation of cyber defenders through hands-on learning, community support, and innovative security solutions.
+          Empowering the next generation of cyber defenders at Kennesaw State
+          University through hands-on learning, community support, and
+          innovative security solutions.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -56,11 +65,11 @@ export const Hero: React.FC = () => {
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            Explore Divisions
+            About Us
           </Button>
         </div>
 
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-8">
+        <div className="mt-20 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24 border-t border-white/10 pt-8">
           {HERO_STATS.map((stat, i) => (
             <div key={i} className="text-center">
               <div className="text-2xl font-bold text-white mb-1">
