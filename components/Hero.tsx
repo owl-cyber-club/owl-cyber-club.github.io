@@ -3,22 +3,23 @@ import { ChevronRight } from "lucide-react";
 import { Button } from "./ui/Button";
 
 import { InteractiveStars } from "./InteractiveStars";
-import { CLUB_EVENTS } from "../data/events";
-
-const currentYear = new Date().getFullYear();
-const sessionsThisYear = CLUB_EVENTS.filter((e) => {
-  if (e.date === "TBD") return false;
-  const date = new Date(e.date + "T12:00:00");
-  return date.getFullYear() === currentYear;
-}).length;
-
-const HERO_STATS = [
-  { label: "Active Members", value: "90+" },
-  { label: "Hands-on Workshops", value: "20+" },
-  { label: `Sessions this year`, value: sessionsThisYear.toString() },
-];
+import { useEvents } from "../hooks/useEvents";
 
 export const Hero: React.FC = () => {
+  const { events } = useEvents();
+
+  const currentYear = new Date().getFullYear();
+  const sessionsThisYear = events.filter((e) => {
+    if (e.date === "TBD") return false;
+    const date = new Date(e.date + "T12:00:00");
+    return date.getFullYear() === currentYear;
+  }).length;
+
+  const HERO_STATS = [
+    { label: "Active Members", value: "90+" },
+    { label: "Hands-on Workshops", value: "20+" },
+    { label: `Sessions this year`, value: sessionsThisYear.toString() },
+  ];
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       <div className="absolute inset-0 grid-bg z-0" />

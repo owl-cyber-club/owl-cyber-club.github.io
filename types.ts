@@ -17,5 +17,5 @@ export interface Event {
   type: "Workshop" | "CTF" | "Social" | "Competition";
   description?: string;
   link?: string;
+  flyer?: string;
 }
-
