@@ -43,7 +43,7 @@ Welcome! This guide explains how to add, edit, or remove events on the **Owl Cyb
 
 If your event has a promotional image (flyer), you need to upload it to the repo **before** adding its name to the `events.json` file.
 
-1. Go to the [public/flyers folder on GitHub](https://github.com/owl-cyber-club/owl-cyber-club.github.io/tree/main/public/flyers).
+1. Go to the [public/event-flyers folder on GitHub](https://github.com/owl-cyber-club/owl-cyber-club.github.io/tree/main/public/event-flyers).
 2. Click the **Add file** button in the top right, then select **Upload files**.
 3. Drag and drop your image file (e.g., `ctf-poster.png` or `workshop.jpg`) onto the screen.
 4. Click the green **Commit changes** button.

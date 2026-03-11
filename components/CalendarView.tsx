@@ -272,7 +272,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                       {e.flyer && (
                         <div className="mt-4 rounded-lg overflow-hidden border border-white/10 max-h-96 flex justify-center bg-black/50">
                           <img
-                            src={`/flyers/${e.flyer}`}
+                            src={`/event-flyers/${e.flyer}`}
                             alt={`${e.title} Flyer`}
                             className="max-w-full h-auto max-h-96 object-contain"
                           />
