@@ -103,7 +103,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
           </div>
 
           <div className="flex flex-col items-end gap-4">
-            <div className="flex items-center gap-4 bg-zinc-900/50 p-2 rounded-xl border border-white/5">
+            <div className="flex items-center gap-4 bg-zinc-900/50 p-2 rounded-xl border border-cyber-yellow/20 shadow-[0_0_15px_rgba(234,179,8,0.05)]">
               <button
                 onClick={prevMonth}
                 className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white"
@@ -200,21 +200,33 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
       <AnimatePresence>
         {selectedDate && (
           <>
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedDate(null)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-md z-[110]"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[110]"
             />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md z-[120] p-6"
-            >
-              <div className="bg-zinc-900 border border-cyber-yellow/20 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                <div className="p-6 bg-cyber-yellow/10 border-b border-cyber-yellow/10 flex items-center justify-between">
+            {/* Modal Container */}
+            <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ type: "spring", duration: 0.5 }}
+                className="relative bg-zinc-950 border border-cyber-yellow/20 rounded-2xl w-full max-w-lg overflow-hidden shadow-[0_0_50px_rgba(234,179,8,0.1)] pointer-events-auto flex flex-col max-h-[90vh]"
+              >
+                <div className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
+                  <motion.div
+                    className="absolute -inset-[80%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,rgba(234,179,8,0.2)_316deg,rgba(234,179,8,0.95)_334deg,rgba(234,179,8,0.35)_350deg,transparent_360deg)]"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 8.5, ease: "linear", repeat: Infinity }}
+                  />
+                  <div className="absolute inset-[1.5px] rounded-2xl bg-zinc-950" />
+                </div>
+
+                <div className="relative z-[1] p-6 bg-cyber-yellow/10 border-b border-cyber-yellow/10 flex items-center justify-between shrink-0">
                   <div className="flex items-center gap-3">
                     <CalendarIcon className="w-5 h-5 text-cyber-yellow" />
                     <h3 className="text-xl font-bold text-white">
@@ -237,7 +249,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                   </button>
                 </div>
 
-                <div className="p-6 space-y-6">
+                <div className="relative z-[1] p-6 space-y-6 overflow-y-auto">
                   {selectedEvents.map((e, idx) => (
                     <div
                       key={idx}
@@ -279,7 +291,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                         </div>
                       )}
 
-                      {e.link && (
+                      {e.link ? (
                         <a
                           href={e.link}
                           target="_blank"
@@ -289,12 +301,16 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                           <ExternalLink className="w-4 h-4" />
                           <span>Join Meeting</span>
                         </a>
+                      ) : (
+                        <div className="flex items-center justify-center gap-2 bg-white/5 text-gray-500 font-bold py-3 px-6 rounded-lg cursor-not-allowed border border-white/5">
+                          <span>No Link Available</span>
+                        </div>
                       )}
                     </div>
                   ))}
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
