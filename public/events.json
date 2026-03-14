@@ -28,7 +28,7 @@
     "description": "Learn the basics of network traffic analysis using Wireshark. We will cover packet capturing, filtering, and identifying basic network events. Great for beginners!",
     "type": "Workshop",
     "link": "https://teams.microsoft.com/meet/2618977480954?p=bAFv5KgvB8hs5abmtl",
-    "linkText": "Join the Workshop Event",
+    "linkText": "Join Teams Meeting",
     "flyer": "2026-02-16-Wireshark-Flyer.png"
   },
   {
@@ -47,7 +47,7 @@
     "title": "Weekly Club Meet",
     "startDate": "2026-03-24",
     "endDate": "2026-04-28",
-    "time": "5:30 PM - 6:00 PM",
+    "time": "5:00 PM - 6:00 PM",
     "location": "TBD",
     "campus": "Marietta",
     "description": "Our regular weekly meet where we hang out and cover a specific topic in cybersecurity or software engineering.",

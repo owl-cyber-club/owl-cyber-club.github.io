@@ -108,16 +108,16 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col md:flex-row items-center gap-6 text-sm text-gray-400">
-                      <div className="flex items-center gap-2">
-                        <Clock size={14} />
-                        {event.time}
+                    <div className="flex flex-col justify-center gap-3 md:gap-4 text-sm text-gray-400 shrink-0 pt-2 md:pt-0">
+                      <div className="flex items-start gap-2">
+                        <Clock size={14} className="shrink-0 mt-[2px]" />
+                        <span className="leading-tight">{event.time}</span>
                       </div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <MapPin size={14} className="shrink-0" />
-                        <span className="truncate max-w-[200px]">{event.location}</span>
+                      <div className="flex flex-wrap items-start gap-2">
+                        <MapPin size={14} className="shrink-0 mt-[2px]" />
+                        <span className="max-w-[250px] break-words leading-tight">{event.location}</span>
                         {event.campus && (
-                          <span className="px-1.5 py-0.5 rounded text-[9px] bg-white/5 text-gray-400 uppercase tracking-wider border border-white/10 shrink-0">
+                          <span className="px-1.5 py-0.5 rounded text-[9px] bg-white/5 text-gray-400 uppercase tracking-wider border border-white/10 shrink-0 mt-[1px]">
                             {event.campus}
                           </span>
                         )}
