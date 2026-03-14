@@ -296,7 +296,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                         </div>
                       )}
 
-                      {e.link ? (
+                      {e.link && (
                         <a
                           href={e.link}
                           target="_blank"
@@ -306,10 +306,6 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                           <ExternalLink className="w-4 h-4" />
                           <span>{e.linkText || "Join Meeting"}</span>
                         </a>
-                      ) : (
-                        <div className="flex items-center justify-center gap-2 bg-white/5 text-gray-500 font-bold py-3 px-6 rounded-lg cursor-not-allowed border border-white/5">
-                          <span>No Link Available</span>
-                        </div>
                       )}
                     </div>
                   ))}

@@ -4,7 +4,6 @@ import {
   MapPin,
   Clock,
   ExternalLink,
-  Image as ImageIcon,
 } from "lucide-react";
 import { useEvents } from "../hooks/useEvents";
 import { EventModal } from "./EventModal";
@@ -102,13 +101,6 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
                       <div>
                         <h3 className="text-xl font-semibold text-white group-hover:text-cyber-yellow transition-colors flex items-center gap-2">
                           {event.title}
-                          {event.flyer && (
-                            <ImageIcon
-                              size={16}
-                              className="text-cyber-yellow/50 group-hover:text-cyber-yellow transition-colors"
-                              aria-label="Has Flyer"
-                            />
-                          )}
                         </h3>
                         <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] bg-white/10 text-gray-300 border border-white/5 uppercase tracking-wide">
                           {event.type}

@@ -109,7 +109,7 @@ export const EventModal: React.FC<EventModalProps> = ({
                 </div>
 
                 <div className="flex flex-col gap-3 pt-4">
-                  {event.link ? (
+                  {event.link && (
                     <a
                       href={event.link}
                       target="_blank"
@@ -119,10 +119,6 @@ export const EventModal: React.FC<EventModalProps> = ({
                       <span>{event.linkText || "Join Meeting / Open Link"}</span>
                       <ExternalLink className="w-4 h-4" />
                     </a>
-                  ) : (
-                    <div className="flex items-center justify-center gap-2 bg-white/5 text-gray-500 font-bold py-3 px-6 rounded-lg cursor-not-allowed border border-white/5">
-                      <span>No Link Available</span>
-                    </div>
                   )}
                   <button
                     onClick={onClose}
