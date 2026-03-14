@@ -23,6 +23,22 @@
     "link": "https://teams.microsoft.com/meet/29301078335637?p=BtigJfIvObc1ncG53T"
   },
   {
+    "title": "Weekly Club Meet",
+    "startDate": "2026-03-20",
+    "endDate": "2026-05-15",
+    "time": "6:00 PM - 7:00 PM",
+    "location": "KSU Marietta Campus",
+    "type": "Club Meet",
+    "series": "weekly"
+  },
+  {
+    "title": "Spring Social",
+    "date": "2026-04-10",
+    "time": "5:00 PM - 7:00 PM",
+    "location": "KSU Student Center",
+    "type": "Social"
+  },
+  {
     "title": "Owl Cyber Capture the Flag (CTF) Challenge",
     "date": "2026-04-17",
     "time": "1:00 PM - 5:00 PM",

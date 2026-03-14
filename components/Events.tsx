@@ -19,16 +19,36 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
     console.error("Failed to load events:", error);
   }
 
-  // Get latest 3 events. Treat TBD as future/upcoming.
+  // Get latest 3 events from current date. Treat TBD as future/upcoming.
+  // Filter out any past events based on the current date string (YYYY-MM-DD).
+  const todayDate = new Date();
+  const todayString = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, '0')}-${String(todayDate.getDate()).padStart(2, '0')}`;
+  
+  let seenClubMeet = false;
+
   const upcomingEvents = [...events]
+    .filter((e) => {
+      const eDate = e.date || "TBD";
+      if (eDate === "TBD") return true;
+      return eDate >= todayString;
+    })
     .sort((a, b) => {
-      if (a.date === "TBD") return 1;
-      if (b.date === "TBD") return -1;
-      return new Date(a.date).getTime() - new Date(b.date).getTime();
+      const aDate = a.date || "TBD";
+      const bDate = b.date || "TBD";
+      if (aDate === "TBD") return 1;
+      if (bDate === "TBD") return -1;
+      return aDate.localeCompare(bDate);
+    })
+    .filter((e) => {
+      if (e.type === "Club Meet" && e.series) {
+        if (seenClubMeet) return false;
+        seenClubMeet = true;
+      }
+      return true;
     })
     .slice(0, 3);
 
-  const formatDate = (dateStr: string) => {
+  const formatDate = (dateStr: string = "TBD") => {
     if (dateStr === "TBD") return { day: "TBD", month: "TBD" };
     const date = new Date(dateStr + "T12:00:00");
     return {
