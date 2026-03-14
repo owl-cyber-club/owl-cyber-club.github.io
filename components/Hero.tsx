@@ -1,6 +1,4 @@
 import React from "react";
-import { ChevronRight } from "lucide-react";
-import { Button } from "./ui/Button";
 
 import { InteractiveStars } from "./InteractiveStars";
 import { useEvents } from "../hooks/useEvents";
@@ -8,17 +6,19 @@ import { useEvents } from "../hooks/useEvents";
 export const Hero: React.FC = () => {
   const { events } = useEvents();
 
-  const currentYear = new Date().getFullYear();
+  const todayDate = new Date();
+  const todayString = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, "0")}-${String(todayDate.getDate()).padStart(2, "0")}`;
+  const currentYearStr = todayDate.getFullYear().toString();
+
   const sessionsThisYear = events.filter((e) => {
     if (e.date === "TBD") return false;
-    const date = new Date(e.date + "T12:00:00");
-    return date.getFullYear() === currentYear;
+    return e.date.startsWith(currentYearStr) && e.date <= todayString;
   }).length;
 
   const HERO_STATS = [
-    { label: "Active Members", value: "90+" },
-    { label: "Hands-on Workshops", value: "20+" },
-    { label: `Sessions this year`, value: sessionsThisYear.toString() },
+    { label: "Active Members", value: "50+" },
+    { label: "Sessions this year", value: sessionsThisYear.toString() },
+    { label: "Semesters Active", value: "3" },
   ];
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -48,26 +48,15 @@ export const Hero: React.FC = () => {
         </h1>
 
         <p className="text-xl md:text-2l text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed font-medium">
-          Empowering the next generation of cyber defenders at Kennesaw State
-          University through hands-on learning, community support, and
-          innovative security solutions.
+          Empowering the next generation of cyber defenders at KSU through
+          hands-on learning, community support, and lasting professional
+          relationships.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button>
-            Start Hacking
-            <ChevronRight className="ml-2 w-4 h-4" />
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={() =>
-              document
-                .getElementById("about")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            About Us
-          </Button>
+        <div className="flex items-center justify-center p-2 text-sm text-gray-400 max-w-lg mx-auto leading-relaxed">
+          The OWL Cyber Club is an official RSO (Registered Student
+          Organization) at Kennesaw State University, approved and overseen by
+          the Department of Student Activities.
         </div>
 
         <div className="mt-20 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24 border-t border-white/10 pt-8">
