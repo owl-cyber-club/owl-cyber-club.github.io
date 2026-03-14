@@ -16,9 +16,11 @@ export interface Event {
   endDate?: string; // Format: "YYYY-MM-DD" for series
   time: string;
   location: string;
-  type: "Workshop" | "CTF" | "Social" | "Competition" | "Club Meet";
+  type: "Workshop" | "Industry Insight" | "Social" | "Competition" | "Club Meet";
   series?: "weekly" | "bi-weekly" | "monthly";
+  campus?: "Marietta" | "Kennesaw" | "Online";
   description?: string;
   link?: string;
+  linkText?: string;
   flyer?: string;
 }

@@ -16,9 +16,12 @@ Welcome! This guide explains how to add, edit, or remove events on the **Owl Cyb
   "title": "Your Event Title Here",
   "date": "YYYY-MM-DD",
   "time": "5:00 PM - 6:00 PM",
-  "location": "Location Name (e.g., Teams or Room 123)",
+  "location": "Engineering & Tech Center",
+  "campus": "Marietta",
   "type": "Workshop",
+  "description": "A short, engaging paragraph summarizing the event! What should attendees expect?",
   "link": "https://teams.microsoft.com/...",
+  "linkText": "Join the Workshop Event",
   "flyer": "your-flyer-name.png"
 }
 ```
@@ -33,22 +36,26 @@ Use `startDate`, `endDate`, and `series` instead of `date` if the event repeats 
   "startDate": "2026-03-20",
   "endDate": "2026-05-31",
   "time": "6:00 PM - 7:00 PM",
-  "location": "KSU Marietta Campus",
+  "location": "Room 101",
+  "campus": "Marietta",
   "type": "Club Meet",
   "series": "weekly"
 }
 ```
 
-#### Field Explanations:
+### Field Explanations:
 
 - `"title"`: Name of the event.
 - `"date"`: The date of a single event in `YYYY-MM-DD` format (e.g., `2026-10-31`). If unsure, use `"TBD"`.
-- `"startDate"` / `"endDate"`: Use these *instead* of `date` for a recurring series to define the start and end span of the event.
+- `"startDate"` / `"endDate"`: Use these _instead_ of `date` for a recurring series to define the start and end span of the event.
 - `"series"`: _(Optional)_ How often the event repeats. Must be one of: `"weekly"`, `"bi-weekly"`, or `"monthly"`.
 - `"time"`: A short string representing the time range.
-- `"location"`: Where it takes place.
-- `"type"`: Must be one of: `"Workshop"`, `"CTF"`, `"Social"`, `"Competition"`, or `"Club Meet"`.
+- `"location"`: Where it takes place. Keep it concise (e.g., `"Room 216"` or `"Teams"`).
+- `"campus"`: _(Optional)_ Tag to distinguish location. Must be `"Marietta"`, `"Kennesaw"`, or `"Online"`.
+- `"type"`: Must be one of: `"Workshop"`, `"Social"`, `"Competition"`, `"Club Meet"`, or `"Industry Insight"`.
+- `"description"`: _(Optional)_ Detailed explanation of the event. Will only be shown when the event is explicitly clicked or opened.
 - `"link"`: _(Optional)_ URL to a Teams meeting or registration page. If you don't have one, just delete this line completely.
+- `"linkText"`: _(Optional)_ Customizes the button text for the link (e.g., `"Register Here"` vs `"Join Meeting"`).
 - `"flyer"`: _(Optional)_ The exact filename of the flyer image you uploaded (see instructions below). If you don't have a flyer, just delete this line completely.
 
 5. **Save Changes**: Scroll to the top right and click the green **Commit changes...** button.

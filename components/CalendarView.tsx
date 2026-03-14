@@ -269,9 +269,14 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                           <Clock className="w-4 h-4 text-cyber-yellow" />
                           {e.time}
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                          <MapPin className="w-4 h-4 text-cyber-yellow" />
-                          {e.location}
+                        <div className="flex items-center gap-2 text-sm text-gray-400 flex-wrap">
+                          <MapPin className="w-4 h-4 text-cyber-yellow shrink-0" />
+                          <span>{e.location}</span>
+                          {e.campus && (
+                            <span className="px-1.5 py-0.5 rounded text-[9px] bg-cyber-yellow/10 text-cyber-yellow uppercase tracking-wider border border-cyber-yellow/20">
+                              {e.campus}
+                            </span>
+                          )}
                         </div>
                       </div>
 
@@ -299,7 +304,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
                           className="flex items-center justify-center gap-2 bg-cyber-yellow hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-cyber-yellow/20 text-sm"
                         >
                           <ExternalLink className="w-4 h-4" />
-                          <span>Join Meeting</span>
+                          <span>{e.linkText || "Join Meeting"}</span>
                         </a>
                       ) : (
                         <div className="flex items-center justify-center gap-2 bg-white/5 text-gray-500 font-bold py-3 px-6 rounded-lg cursor-not-allowed border border-white/5">

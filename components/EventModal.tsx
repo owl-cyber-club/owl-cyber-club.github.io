@@ -85,9 +85,14 @@ export const EventModal: React.FC<EventModalProps> = ({
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm text-gray-400">
+                  <div className="flex items-center gap-2 text-sm text-gray-400 flex-wrap">
                       <MapPin size={16} className="text-cyber-yellow shrink-0" />
                       <span className="text-white">{event.location}</span>
+                      {event.campus && (
+                        <span className="px-2 py-0.5 rounded text-[10px] bg-cyber-yellow/10 text-cyber-yellow uppercase tracking-wider border border-cyber-yellow/20">
+                          {event.campus}
+                        </span>
+                      )}
                   </div>
 
                   {event.description && (
@@ -97,8 +102,8 @@ export const EventModal: React.FC<EventModalProps> = ({
                   )}
 
                   {event.flyer && (
-                    <div className="mt-4 rounded-xl overflow-hidden border border-white/10">
-                      <img src={event.flyer} alt={`${event.title} flyer`} className="w-full h-auto object-cover" />
+                    <div className="mt-4 rounded-lg overflow-hidden border border-white/10 max-h-96 flex justify-center bg-black/50">
+                      <img src={`/event-flyers/${event.flyer}`} alt={`${event.title} flyer`} className="max-w-full h-auto max-h-96 object-contain" />
                     </div>
                   )}
                 </div>
@@ -111,7 +116,7 @@ export const EventModal: React.FC<EventModalProps> = ({
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 bg-cyber-yellow hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-cyber-yellow/20"
                     >
-                      <span>Join Meeting / Open Link</span>
+                      <span>{event.linkText || "Join Meeting / Open Link"}</span>
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   ) : (
