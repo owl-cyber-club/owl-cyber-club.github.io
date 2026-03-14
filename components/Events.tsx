@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Calendar,
   MapPin,
@@ -7,6 +7,8 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 import { useEvents } from "../hooks/useEvents";
+import { EventModal } from "./EventModal";
+import { Event } from "../types";
 
 interface EventsProps {
   onViewCalendar?: () => void;
@@ -14,6 +16,7 @@ interface EventsProps {
 
 export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
   const { events, loading, error } = useEvents();
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
 
   if (error) {
     console.error("Failed to load events:", error);
@@ -128,30 +131,26 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
               );
 
               const containerClass =
-                "group relative bg-zinc-900/50 hover:bg-zinc-900 border border-white/5 rounded-xl p-6 transition-all duration-300 overflow-hidden block w-full text-left";
-
-              if (event.link) {
-                return (
-                  <a
-                    key={idx}
-                    href={event.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={containerClass}
-                  >
-                    {CardContent}
-                  </a>
-                );
-              }
+                "cursor-pointer group relative bg-zinc-900/50 hover:bg-zinc-900 border border-white/5 rounded-xl p-6 transition-all duration-300 overflow-hidden block w-full text-left focus:outline-none focus:ring-2 focus:ring-cyber-yellow/50";
 
               return (
-                <div key={idx} className={containerClass}>
+                <button
+                  key={idx}
+                  onClick={() => setSelectedEvent(event)}
+                  className={containerClass}
+                >
                   {CardContent}
-                </div>
+                </button>
               );
             })}
           </div>
         )}
+
+        <EventModal 
+          isOpen={!!selectedEvent} 
+          event={selectedEvent} 
+          onClose={() => setSelectedEvent(null)} 
+        />
       </div>
     </section>
   );
