@@ -1,5 +1,12 @@
 [
   {
+    "title": "Fall 2025 Kickoff - Game Night",
+    "date": "2025-09-30",
+    "time": "7:00 PM - 8:30 PM",
+    "location": "KSU Marietta Campus - Engineering & Tech Center",
+    "type": "Social"
+  },
+  {
     "title": "Intro to WireShark",
     "date": "2026-02-16",
     "time": "5:00 PM - 6:00 PM",
@@ -8,10 +15,18 @@
     "link": "https://teams.microsoft.com/meet/2618977480954?p=bAFv5KgvB8hs5abmtl"
   },
   {
+    "title": "Virtual Cybersec Roadmap with Ashish Ghimire",
+    "date": "2026-02-26",
+    "time": "5:30 PM - 6:00 PM",
+    "location": "Teams",
+    "type": "Workshop",
+    "link": "https://teams.microsoft.com/meet/29301078335637?p=BtigJfIvObc1ncG53T"
+  },
+  {
     "title": "Owl Cyber Capture the Flag (CTF) Challenge",
     "date": "2026-04-17",
     "time": "1:00 PM - 5:00 PM",
-    "location": "Kennesaw Campus (ALC 1202)",
+    "location": "KSU Kennesaw Campus (ALC 1202)",
     "type": "Competition"
   }
 ]
