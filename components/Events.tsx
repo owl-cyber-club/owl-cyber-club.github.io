@@ -145,7 +145,7 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
 
         <EventModal 
           isOpen={!!selectedEvent} 
-          event={selectedEvent} 
+          events={selectedEvent ? [selectedEvent] : []} 
           onClose={() => setSelectedEvent(null)} 
         />
       </div>

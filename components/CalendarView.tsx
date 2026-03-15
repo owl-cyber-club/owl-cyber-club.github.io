@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useEvents } from "../hooks/useEvents";
 import { Event } from "../types";
+import { EventModal } from "./EventModal";
 
 interface CalendarViewProps {
   onClose: () => void;
@@ -197,124 +198,19 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
       </div>
 
       {/* Event Details Modal */}
-      <AnimatePresence>
-        {selectedDate && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedDate(null)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[110]"
-            />
-            {/* Modal Container */}
-            <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 pointer-events-none">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                transition={{ type: "spring", duration: 0.5 }}
-                className="relative bg-zinc-950 border border-cyber-yellow/20 rounded-2xl w-full max-w-lg overflow-hidden shadow-[0_0_50px_rgba(234,179,8,0.1)] pointer-events-auto flex flex-col max-h-[90vh]"
-              >
-                <div className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
-                  <motion.div
-                    className="absolute -inset-[80%] bg-[conic-gradient(from_0deg,transparent_0deg,transparent_300deg,rgba(234,179,8,0.2)_316deg,rgba(234,179,8,0.95)_334deg,rgba(234,179,8,0.35)_350deg,transparent_360deg)]"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 8.5, ease: "linear", repeat: Infinity }}
-                  />
-                  <div className="absolute inset-[1.5px] rounded-2xl bg-zinc-950" />
-                </div>
-
-                <div className="relative z-[1] p-6 bg-cyber-yellow/10 border-b border-cyber-yellow/10 flex items-center justify-between shrink-0">
-                  <div className="flex items-center gap-3">
-                    <CalendarIcon className="w-5 h-5 text-cyber-yellow" />
-                    <h3 className="text-xl font-bold text-white">
-                      {selectedDate === "TBD"
-                        ? "To Be Determined"
-                        : new Date(
-                            selectedDate + "T12:00:00",
-                          ).toLocaleDateString("en-US", {
-                            month: "long",
-                            day: "numeric",
-                            year: "numeric",
-                          })}
-                    </h3>
-                  </div>
-                  <button
-                    onClick={() => setSelectedDate(null)}
-                    className="text-gray-400 hover:text-white"
-                  >
-                    <X size={20} />
-                  </button>
-                </div>
-
-                <div className="relative z-[1] p-6 space-y-6 overflow-y-auto">
-                  {selectedEvents.map((e, idx) => (
-                    <div
-                      key={idx}
-                      className="space-y-4 pb-6 last:pb-0 border-b last:border-0 border-white/5"
-                    >
-                      <div>
-                        <span className="text-[10px] uppercase font-bold text-cyber-yellow tracking-widest bg-cyber-yellow/10 px-2 py-0.5 rounded border border-cyber-yellow/20">
-                          {e.type}
-                        </span>
-                        <h4 className="text-2xl font-bold text-white mt-2 leading-tight">
-                          {e.title}
-                        </h4>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
-                          <Clock className="w-4 h-4 text-cyber-yellow" />
-                          {e.time}
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-400 flex-wrap">
-                          <MapPin className="w-4 h-4 text-cyber-yellow shrink-0" />
-                          <span>{e.location}</span>
-                          {e.campus && (
-                            <span className="px-1.5 py-0.5 rounded text-[9px] bg-cyber-yellow/10 text-cyber-yellow uppercase tracking-wider border border-cyber-yellow/20">
-                              {e.campus}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      {e.description && (
-                        <p className="text-gray-400 text-sm leading-relaxed bg-white/5 p-3 rounded-lg border border-white/5">
-                          {e.description}
-                        </p>
-                      )}
-
-                      {e.flyer && (
-                        <div className="mt-4 rounded-lg overflow-hidden border border-white/10 max-h-96 flex justify-center bg-black/50">
-                          <img
-                            src={`/event-flyers/${e.flyer}`}
-                            alt={`${e.title} Flyer`}
-                            className="max-w-full h-auto max-h-96 object-contain"
-                          />
-                        </div>
-                      )}
-
-                      {e.link && (
-                        <a
-                          href={e.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 bg-cyber-yellow hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-cyber-yellow/20 text-sm"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          <span>{e.linkText || "Join Meeting"}</span>
-                        </a>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </>
-        )}
-      </AnimatePresence>
+      <EventModal
+        isOpen={!!selectedDate}
+        events={selectedEvents}
+        onClose={() => setSelectedDate(null)}
+        title={selectedDate === "TBD"
+          ? "To Be Determined"
+          : selectedDate ? new Date(selectedDate + "T12:00:00").toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            }) : ""}
+        hideDateInBody={true}
+      />
     </motion.div>
   );
 };

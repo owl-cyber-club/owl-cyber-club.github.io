@@ -16,12 +16,12 @@ export const Contact: React.FC<ContactProps> = ({ onViewCalendar }) => {
             <h2 className="text-3xl font-bold text-white mb-6">Get Involved</h2>
             <p className="text-gray-400 mb-8 leading-relaxed">
               Ready to dive in? Explore our upcoming events, join our discussion
-              forums, and find out how you can get more involved with the Student
-              Club. We're here to help you succeed and look forward to seeing you
-              at our next meeting!
+              forums, and find out how you can get more involved with the club.
+              We're here to help you succeed and look forward to seeing you at
+              our next meeting!
             </p>
             <div className="space-y-4">
-              <button 
+              <button
                 onClick={onViewCalendar}
                 className="w-full text-left flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-cyber-yellow/50 transition-all hover:bg-white/10 group block"
               >
@@ -29,11 +29,15 @@ export const Contact: React.FC<ContactProps> = ({ onViewCalendar }) => {
                   <Calendar className="w-5 h-5 text-cyber-yellow" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold group-hover:text-cyber-yellow transition-colors">Upcoming Events</h3>
-                  <p className="text-sm text-gray-500">Stay updated with our latest workshops</p>
+                  <h3 className="text-white font-semibold group-hover:text-cyber-yellow transition-colors">
+                    Upcoming Events
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Stay updated with our latest workshops
+                  </p>
                 </div>
               </button>
-              <a 
+              <a
                 href="https://discord.com/channels/1414712346336690256/1418237588115947540"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -43,8 +47,12 @@ export const Contact: React.FC<ContactProps> = ({ onViewCalendar }) => {
                   <MessageSquare className="w-5 h-5 text-cyber-yellow" />
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold group-hover:text-cyber-yellow transition-colors">Discussion Forums</h3>
-                  <p className="text-sm text-gray-500">Collaborate and share ideas with peers</p>
+                  <h3 className="text-white font-semibold group-hover:text-cyber-yellow transition-colors">
+                    Discussion Forums
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Collaborate and share ideas with peers
+                  </p>
                 </div>
               </a>
             </div>
@@ -60,8 +68,8 @@ export const Contact: React.FC<ContactProps> = ({ onViewCalendar }) => {
                 to Amrut Ramasamy (Club President). We're here to help you on
                 your cybersecurity journey.
               </p>
-              
-              <a 
+
+              <a
                 href="mailto:aramasam@students.kennesaw.edu"
                 className="flex items-center gap-4 group"
               >
@@ -69,7 +77,9 @@ export const Contact: React.FC<ContactProps> = ({ onViewCalendar }) => {
                   <Mail className="w-6 h-6 text-cyber-yellow" />
                 </div>
                 <div>
-                  <p className="text-sm text-cyber-yellow font-mono uppercase tracking-wider">Email Us</p>
+                  <p className="text-sm text-cyber-yellow font-mono uppercase tracking-wider">
+                    Email Us
+                  </p>
                   <p className="text-white font-semibold group-hover:text-cyber-yellow transition-colors">
                     aramasam@students.kennesaw.edu
                   </p>

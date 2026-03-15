@@ -6,13 +6,17 @@ import { Event } from "../types";
 interface EventModalProps {
   isOpen: boolean;
   onClose: () => void;
-  event: Event | null;
+  events: Event[];
+  title?: string;
+  hideDateInBody?: boolean;
 }
 
 export const EventModal: React.FC<EventModalProps> = ({
   isOpen,
   onClose,
-  event,
+  events,
+  title = "Event Details",
+  hideDateInBody = false,
 }) => {
   const [mounted, setMounted] = useState(false);
 
@@ -24,7 +28,7 @@ export const EventModal: React.FC<EventModalProps> = ({
 
   return (
     <AnimatePresence>
-      {isOpen && event && (
+      {isOpen && events && events.length > 0 && (
         <>
           {/* Backdrop */}
           <motion.div
@@ -32,11 +36,11 @@ export const EventModal: React.FC<EventModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100]"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[120]"
           />
 
           {/* Modal Container */}
-          <div className="fixed inset-0 z-[101] flex items-center justify-center p-4 pointer-events-none">
+          <div className="fixed inset-0 z-[121] flex items-center justify-center p-4 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -54,13 +58,13 @@ export const EventModal: React.FC<EventModalProps> = ({
               </div>
 
               {/* Header */}
-              <div className="relative z-[1] px-6 py-4 flex items-center justify-between border-b border-white/10 shrink-0">
+              <div className="relative z-[1] px-6 py-4 flex items-center justify-between border-b border-white/10 shrink-0 bg-zinc-950/50">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-cyber-yellow/10 rounded-lg">
                     <CalendarIcon className="w-5 h-5 text-cyber-yellow" />
                   </div>
                   <h3 className="text-xl font-bold text-white tracking-wide">
-                    Event Details
+                    {title}
                   </h3>
                 </div>
                 <button
@@ -73,56 +77,82 @@ export const EventModal: React.FC<EventModalProps> = ({
 
               {/* Content */}
               <div className="relative z-[1] p-6 md:p-8 space-y-6 overflow-y-auto">
-                <div className="space-y-4">
-                  <h4 className="text-2xl font-bold text-white pr-8">{event.title}</h4>
-                  
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
-                    <div className="flex items-center gap-2">
-                      <Clock size={16} className="text-cyber-yellow" />
-                      <span className="text-white">{event.date && event.date !== "TBD" ? new Date(event.date + "T12:00:00").toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) : "TBD"}</span>
-                      <span>•</span>
-                      <span className="text-white">{event.time}</span>
-                    </div>
-                  </div>
+                <div className="space-y-6">
+                  {events.map((event, idx) => (
+                    <div key={idx} className="space-y-4 pb-6 last:pb-0 border-b last:border-0 border-white/5">
+                      <div>
+                        {event.type && (
+                          <span className="text-[10px] uppercase font-bold text-cyber-yellow tracking-widest bg-cyber-yellow/10 px-2 py-0.5 rounded border border-cyber-yellow/20 mb-2 inline-block">
+                            {event.type}
+                          </span>
+                        )}
+                        <h4 className="text-2xl font-bold text-white leading-tight pr-8">{event.title}</h4>
+                      </div>
+                      
+                      <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+                        <div className="flex items-center gap-2">
+                          <Clock size={16} className="text-cyber-yellow shrink-0" />
+                          {!hideDateInBody && event.date && event.date !== "TBD" ? (
+                            <>
+                              <span className="text-white">
+                                {new Date(event.date + "T12:00:00").toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
+                              </span>
+                              <span>•</span>
+                            </>
+                          ) : null}
+                          {!hideDateInBody && (!event.date || event.date === "TBD") ? (
+                            <>
+                              <span className="text-white">TBD</span>
+                              <span>•</span>
+                            </>
+                          ) : null}
+                          <span className="text-white">{event.time}</span>
+                        </div>
+                      </div>
 
-                  <div className="flex items-center gap-2 text-sm text-gray-400 flex-wrap">
-                      <MapPin size={16} className="text-cyber-yellow shrink-0" />
-                      <span className="text-white">{event.location}</span>
-                      {event.campus && (
-                        <span className="px-2 py-0.5 rounded text-[10px] bg-cyber-yellow/10 text-cyber-yellow uppercase tracking-wider border border-cyber-yellow/20">
-                          {event.campus}
-                        </span>
+                      <div className="flex items-center gap-2 text-sm text-gray-400 flex-wrap">
+                          <MapPin size={16} className="text-cyber-yellow shrink-0" />
+                          <span className="text-white">{event.location}</span>
+                          {event.campus && (
+                            <span className="px-2 py-0.5 rounded text-[10px] bg-cyber-yellow/10 text-cyber-yellow uppercase tracking-wider border border-cyber-yellow/20 shrink-0 mt-[1px]">
+                              {event.campus}
+                            </span>
+                          )}
+                      </div>
+
+                      {event.description && (
+                        <div className="bg-white/5 rounded-xl p-5 border border-white/10 mt-4 leading-relaxed text-gray-300 text-sm">
+                          {event.description}
+                        </div>
                       )}
-                  </div>
 
-                  {event.description && (
-                    <div className="bg-white/5 rounded-xl p-5 border border-white/10 mt-4 leading-relaxed text-gray-300">
-                      {event.description}
-                    </div>
-                  )}
+                      {event.flyer && (
+                        <div className="mt-4 rounded-lg overflow-hidden border border-white/10 max-h-96 flex justify-center bg-black/50">
+                          <img src={`/event-flyers/${event.flyer}`} alt={`${event.title} flyer`} className="max-w-full h-auto max-h-96 object-contain" />
+                        </div>
+                      )}
 
-                  {event.flyer && (
-                    <div className="mt-4 rounded-lg overflow-hidden border border-white/10 max-h-96 flex justify-center bg-black/50">
-                      <img src={`/event-flyers/${event.flyer}`} alt={`${event.title} flyer`} className="max-w-full h-auto max-h-96 object-contain" />
+                      {event.link && (
+                        <div className="flex flex-col gap-3 pt-4">
+                          <a
+                            href={event.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2 bg-cyber-yellow hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-cyber-yellow/20 text-sm"
+                          >
+                            <span>{event.linkText || "Join Meeting / Open Link"}</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </div>
+                      )}
                     </div>
-                  )}
+                  ))}
                 </div>
 
-                <div className="flex flex-col gap-3 pt-4">
-                  {event.link && (
-                    <a
-                      href={event.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 bg-cyber-yellow hover:bg-yellow-400 text-black font-bold py-3 px-6 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg shadow-cyber-yellow/20"
-                    >
-                      <span>{event.linkText || "Join Meeting / Open Link"}</span>
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  )}
+                <div className="flex justify-center pt-2">
                   <button
                     onClick={onClose}
-                    className="text-gray-500 hover:text-gray-300 text-sm font-medium py-2 transition-colors"
+                    className="text-gray-500 hover:text-gray-300 text-sm font-medium py-2 transition-colors w-full"
                   >
                     Close
                   </button>
