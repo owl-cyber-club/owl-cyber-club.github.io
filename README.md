@@ -1,15 +1,33 @@
-# Run and deploy your AI Studio app
+# Owl Cyber Club Website
 
-This contains everything you need to run your app locally.
-
+Welcome to the repository for the Owl Cyber Club website!
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+**Prerequisites:** Node.js (v18+ recommended)
 
+1. **Install dependencies:**
 
-1. Install dependencies:
-   `npm install`
+   ```bash
+   npm install
+   ```
 
-3. Run the app:
-   `npm run dev`
+2. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+## Managing Events
+
+Event data is managed via the `public/events.json` file.
+For detailed instructions on adding, modifying, or removing events without writing code, please refer to the [Events Management Guide](EVENTS_GUIDE.md).
+
+## Contributing (Club Officers Only)
+
+For making changes to the website, please refer to the [Contributing Guide](CONTRIBUTING.md).

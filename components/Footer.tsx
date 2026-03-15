@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ShieldCheck, ExternalLink } from "lucide-react";
 import { OwlLifeModal } from "./OwlLifeModal";
 
-
 interface FooterProps {
   highlightJoinLinks?: boolean;
 }
@@ -20,8 +19,8 @@ export const Footer: React.FC<FooterProps> = ({
     >
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-24 bg-cyber-yellow/5 blur-[80px] pointer-events-none"></div>
 
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 gap-6 place-items-center md:grid-cols-3 md:items-center">
-        <div className="order-3 w-full text-center md:order-none md:text-left md:justify-self-start">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 gap-8 place-items-center xl:grid-cols-[1fr_auto_1fr] md:grid-cols-1 md:items-center">
+        <div className="order-3 w-full text-center xl:order-1 xl:text-left xl:justify-self-start">
           <div className="text-2xl font-bold font-mono tracking-tighter text-white">
             OWL<span className="text-cyber-yellow">CYBER</span>
             <span className="text-gray-500">CLUB</span>
@@ -31,11 +30,11 @@ export const Footer: React.FC<FooterProps> = ({
           </p>
         </div>
 
-        <div className="order-1 relative md:order-none md:col-start-2 md:justify-self-center">
+        <div className="order-1 relative xl:order-2 xl:justify-self-center">
           {/* "Socials" Box with glow effect */}
           <div
             className={`
-              relative h-20 border rounded-xl px-5 py-3 flex items-center
+              relative h-[88px] border rounded-xl px-4 py-2 flex flex-col justify-end
               transition-all duration-500
               ${
                 highlightJoinLinks
@@ -44,10 +43,10 @@ export const Footer: React.FC<FooterProps> = ({
               }
             `}
           >
-            <div className="flex items-center gap-4 md:gap-5">
+            <div className="flex flex-col w-full h-full justify-end pb-1.5 sm:pb-1">
               <span
                 className={`
-                  text-sm font-bold font-mono tracking-wider whitespace-nowrap
+                  absolute top-3 left-4 text-xs sm:text-[13px] uppercase font-extrabold font-mono tracking-widest whitespace-nowrap
                   transition-colors duration-500
                   ${highlightJoinLinks ? "text-cyber-yellow" : "text-gray-400"}
                 `}
@@ -56,14 +55,14 @@ export const Footer: React.FC<FooterProps> = ({
               </span>
 
               {/* Social Links */}
-              <div className="flex items-center gap-4 md:gap-5">
+              <div className="flex items-center gap-1.5 md:gap-3">
                 <a
                   href="https://discord.gg/EEEcfHQbKC"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-gray-400 hover:text-[#5865F2] transition-colors"
+                  className="group flex items-center gap-1.5 text-gray-400 hover:text-[#5865F2] transition-colors"
                 >
-                  <span className="p-2 rounded-full bg-white/5 group-hover:bg-[#5865F2]/20 group-hover:text-[#5865F2] transition-colors">
+                  <span className="p-1.5 rounded-full bg-white/5 group-hover:bg-[#5865F2]/20 group-hover:text-[#5865F2] transition-colors">
                     <svg
                       role="img"
                       viewBox="0 0 24 24"
@@ -83,9 +82,9 @@ export const Footer: React.FC<FooterProps> = ({
                   href="https://teams.microsoft.com/l/channel/19%3A3l0MclH4gnXo3z8Mz6_ujVmL-gTYysSGayDYZDkRzZc1%40thread.tacv2/General?groupId=8b5e9afd-4987-4c90-899a-33a91949d59f&tenantId=45f26ee5-f134-439e-bc93-e6c7e33d61c2"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-gray-400 hover:text-[#6264A7] transition-colors"
+                  className="group flex items-center gap-1.5 text-gray-400 hover:text-[#6264A7] transition-colors"
                 >
-                  <span className="p-2 rounded-full bg-white/5 group-hover:bg-[#6264A7]/20 group-hover:text-[#6264A7] transition-colors">
+                  <span className="p-1.5 rounded-full bg-white/5 group-hover:bg-[#6264A7]/20 group-hover:text-[#6264A7] transition-colors">
                     <svg
                       role="img"
                       viewBox="0 0 24 24"
@@ -105,9 +104,9 @@ export const Footer: React.FC<FooterProps> = ({
                   href="https://www.instagram.com/owlcyberclub/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-gray-400 hover:text-[#C13572] transition-colors"
+                  className="group flex items-center gap-1.5 text-gray-400 hover:text-[#C13572] transition-colors"
                 >
-                  <span className="p-2 rounded-full bg-white/5 group-hover:bg-[#C13572]/20 group-hover:text-[#C13572] transition-colors">
+                  <span className="p-1.5 rounded-full bg-white/5 group-hover:bg-[#C13572]/20 group-hover:text-[#C13572] transition-colors">
                     <svg
                       role="img"
                       viewBox="0 0 24 24"
@@ -123,68 +122,114 @@ export const Footer: React.FC<FooterProps> = ({
                     Instagram
                   </span>
                 </a>
+                <a
+                  href="https://www.youtube.com/@OwlCyberClub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-1.5 text-gray-400 hover:text-[#FF0000] transition-colors"
+                >
+                  <span className="p-1.5 rounded-full bg-white/5 group-hover:bg-[#FF0000]/20 group-hover:text-[#FF0000] transition-colors">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                    >
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                  </span>
+                  <span className="hidden md:inline group-hover:text-[#FF0000] transition-colors">
+                    YouTube
+                  </span>
+                </a>
+                <a
+                  href="https://github.com/owl-cyber-club"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="p-1.5 rounded-full bg-white/5 group-hover:bg-white/20 group-hover:text-white transition-colors">
+                    <svg
+                      role="img"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                    >
+                      <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                    </svg>
+                  </span>
+                  <span className="hidden md:inline group-hover:text-white transition-colors">
+                    GitHub
+                  </span>
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-          {/* OwlLife Official Registration Button */}
-          <motion.button
-            onClick={() => setIsOwlLifeModalOpen(true)}
-            animate={
-              highlightJoinLinks
-                ? {
-                    x: [0, -1.5, 1.5, -1, 1, 0],
-                    rotate: [0, -0.6, 0.6, -0.25, 0.25, 0],
-                  }
-                : { x: 0, rotate: 0 }
-            }
-            transition={
-              highlightJoinLinks
-                ? {
-                    duration: 0.45,
-                    ease: "easeInOut",
-                    repeat: 2,
-                    repeatDelay: 0.6,
-                  }
-                : { duration: 0.2 }
-            }
-            className={`group relative order-2 h-20 px-6 py-3 border rounded-xl flex items-center gap-3 transition-all duration-300 overflow-hidden md:order-none md:col-start-3 md:justify-self-end ${
-              highlightJoinLinks
-                ? "bg-cyber-yellow/20 border-cyber-yellow shadow-[0_0_30px_rgba(234,179,8,0.5)]"
-                : "bg-cyber-yellow/10 border-cyber-yellow shadow-[0_0_20px_rgba(234,179,8,0.1)] hover:bg-cyber-yellow hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
-            }`}
-          >
-            {highlightJoinLinks && (
-              <>
-                <motion.span
-                  className="absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none"
-                  animate={{ x: ["-160%", "380%"] }}
-                  transition={{ duration: 1.15, ease: "easeInOut", repeat: 1 }}
-                />
-                <motion.span
-                  className="absolute inset-y-0 -left-1/4 w-1/4 bg-gradient-to-r from-transparent via-cyber-yellow/35 to-transparent -skew-x-12 pointer-events-none"
-                  animate={{ x: ["-170%", "380%"] }}
-                  transition={{ duration: 1.25, ease: "easeInOut", delay: 0.28, repeat: 1 }}
-                />
-              </>
-            )}
-            {/* Shimmer effect on hover */}
-            <div className={`absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 pointer-events-none group-hover:translate-x-[400%] transition-transform duration-1000 ${highlightJoinLinks ? 'hidden' : ''}`} />
-            <div className="p-1.5 bg-cyber-yellow/20 rounded-lg group-hover:bg-black/20 transition-colors">
-              <ShieldCheck className="w-5 h-5 text-cyber-yellow group-hover:text-black transition-colors" />
+        {/* OwlLife Official Registration Button */}
+        <motion.button
+          onClick={() => setIsOwlLifeModalOpen(true)}
+          animate={
+            highlightJoinLinks
+              ? {
+                  x: [0, -1.5, 1.5, -1, 1, 0],
+                  rotate: [0, -0.6, 0.6, -0.25, 0.25, 0],
+                }
+              : { x: 0, rotate: 0 }
+          }
+          transition={
+            highlightJoinLinks
+              ? {
+                  duration: 0.45,
+                  ease: "easeInOut",
+                  repeat: 2,
+                  repeatDelay: 0.6,
+                }
+              : { duration: 0.2 }
+          }
+          className={`group relative order-2 h-[88px] px-6 py-3 border rounded-xl flex items-center gap-3 transition-all duration-300 overflow-hidden xl:order-3 xl:col-start-3 xl:justify-self-end ${
+            highlightJoinLinks
+              ? "bg-cyber-yellow/20 border-cyber-yellow shadow-[0_0_30px_rgba(234,179,8,0.5)]"
+              : "bg-cyber-yellow/10 border-cyber-yellow shadow-[0_0_20px_rgba(234,179,8,0.1)] hover:bg-cyber-yellow hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
+          }`}
+        >
+          {highlightJoinLinks && (
+            <>
+              <motion.span
+                className="absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 pointer-events-none"
+                animate={{ x: ["-160%", "380%"] }}
+                transition={{ duration: 1.15, ease: "easeInOut", repeat: 1 }}
+              />
+              <motion.span
+                className="absolute inset-y-0 -left-1/4 w-1/4 bg-gradient-to-r from-transparent via-cyber-yellow/35 to-transparent -skew-x-12 pointer-events-none"
+                animate={{ x: ["-170%", "380%"] }}
+                transition={{
+                  duration: 1.25,
+                  ease: "easeInOut",
+                  delay: 0.28,
+                  repeat: 1,
+                }}
+              />
+            </>
+          )}
+          {/* Shimmer effect on hover */}
+          <div
+            className={`absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 pointer-events-none group-hover:translate-x-[400%] transition-transform duration-1000 ${highlightJoinLinks ? "hidden" : ""}`}
+          />
+          <div className="p-1.5 bg-cyber-yellow/20 rounded-lg group-hover:bg-black/20 transition-colors">
+            <ShieldCheck className="w-5 h-5 text-cyber-yellow group-hover:text-black transition-colors" />
+          </div>
+          <div className="text-left">
+            <div className="font-mono text-white group-hover:text-black transition-colors">
+              <b>Register</b> on OwlLife!
             </div>
-            <div className="text-left">
-              <div className="text-[10px] uppercase font-bold text-cyber-yellow/80 tracking-widest group-hover:text-black/60 transition-colors">
-                Be an Official Member!
-              </div>
-              <div className="font-bold font-mono text-white group-hover:text-black transition-colors">
-                Register on OwlLife
-              </div>
-            </div>
-          </motion.button>
-
-
+          </div>
+        </motion.button>
       </div>
 
       <OwlLifeModal

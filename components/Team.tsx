@@ -13,43 +13,42 @@ const TEAM_MEMBERS = [
   {
     name: "Lisa Thiongo",
     role: "Vice President",
-    image: "/Lisa.png",
+    image: "/profile-images/Lisa.png",
     github: "https://github.com/LisaThiongo",
     linkedin: "https://www.linkedin.com/in/lisa-thiongo-b0b173240/",
   },
   {
     name: "Sanketh Chapaneri",
     role: "Secretary",
-    image: "/sanketh.jpg",
+    image: "/profile-images/sanketh.jpg",
     github: "https://github.com/DoNotDisturbs",
     linkedin: "https://www.linkedin.com/in/sanketh-chapaneri-a285761b8/",
   },
   {
     name: "Christopher Forrester-Jack",
     role: "Reservation Delegate",
-    image:
-      "/CFJ.png",
+    image: "/profile-images/CFJ.png",
     github: "https://github.com/CFJ200",
     linkedin: "https://www.linkedin.com/in/christopherforrester-jack/",
   },
   {
     name: "Cassidie Grogan",
     role: "Treasurer",
-    image: "/Cassidie.png",
+    image: "/profile-images/Cassidie.png",
     github: "https://github.com/CGrogan4",
     linkedin: "https://www.linkedin.com/in/cassidie-grogan-62134127a/",
   },
   {
     name: "Dr. Manohar Raavi",
     role: "Advisor",
-    image: "/ManoharRaavi.png",
+    image: "/profile-images/ManoharRaavi.png",
     linkedin: "https://www.linkedin.com/in/manohar-raavi-8569a789/",
   },
 ];
 
 export const Team: React.FC = () => {
   return (
-    <section id="about" className="scroll-mt-20 py-24 relative overflow-hidden">
+    <section id="staff" className="scroll-mt-20 py-24 relative overflow-hidden">
       <div className="absolute right-0 top-1/4 w-1/2 h-full opacity-10 pointer-events-none">
         <div className="w-full h-8 bg-cyber-yellow transform -skew-x-12 mb-8 blur-3xl"></div>
         <div className="w-2/3 h-8 bg-white transform -skew-x-12 mb-8 blur-3xl ml-auto"></div>
