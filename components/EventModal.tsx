@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Calendar as CalendarIcon, MapPin, Clock } from "lucide-react";
+import { X, ExternalLink, Calendar as CalendarIcon, MapPin, Clock, Repeat, Ticket } from "lucide-react";
 import { Event } from "../types";
 
 interface EventModalProps {
@@ -81,11 +81,21 @@ export const EventModal: React.FC<EventModalProps> = ({
                   {events.map((event, idx) => (
                     <div key={idx} className="space-y-4 pb-6 last:pb-0 border-b last:border-0 border-white/5">
                       <div>
-                        {event.type && (
-                          <span className="text-[10px] uppercase font-bold text-cyber-yellow tracking-widest bg-cyber-yellow/10 px-2 py-0.5 rounded border border-cyber-yellow/20 mb-2 inline-block">
-                            {event.type}
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="relative inline-block group/icon cursor-help translate-y-[1px]">
+                            <span className="inline-block text-gray-500 hover:text-cyber-yellow/80 transition-colors">
+                              {event.series ? <Repeat size={16} className="transform-gpu" /> : <Ticket size={16} className="-rotate-[18deg] transform-gpu backface-hidden" />}
+                            </span>
+                            <span className="pointer-events-none absolute top-full left-0 mt-2 w-max opacity-0 group-hover/icon:opacity-100 transition-all duration-200 -translate-y-1 group-hover/icon:translate-y-0 text-[10px] tracking-wider font-mono font-bold uppercase bg-zinc-950/95 backdrop-blur-md border border-cyber-yellow/40 text-cyber-yellow px-2 md:px-3 py-1.5 rounded flex items-center justify-center z-[130] shadow-[0_0_15px_rgba(234,179,8,0.15)] origin-top-left">
+                              {event.series ? "Recurring Series" : "One-Time Event"}
+                            </span>
                           </span>
-                        )}
+                          {event.type && (
+                            <span className="text-[10px] uppercase font-bold text-cyber-yellow tracking-widest bg-cyber-yellow/10 px-2 py-0.5 rounded border border-cyber-yellow/20 inline-block">
+                              {event.type}
+                            </span>
+                          )}
+                        </div>
                         <h4 className="text-2xl font-bold text-white leading-tight pr-8">{event.title}</h4>
                       </div>
                       
