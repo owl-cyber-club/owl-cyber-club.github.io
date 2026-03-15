@@ -12,7 +12,14 @@ import IntroAnimation from "./components/IntroAnimation";
 import { CalendarView } from "./components/CalendarView";
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(() => {
+    // Only show intro if there's no hash or just '#' (user navigated to root)
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      return !hash || hash === "#";
+    }
+    return true; // Fallback for SSR if any
+  });
   const [showCalendar, setShowCalendar] = useState(false);
   const [highlightJoinLinks, setHighlightJoinLinks] = useState(false);
 
