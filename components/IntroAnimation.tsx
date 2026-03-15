@@ -35,6 +35,9 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
   useEffect(() => {
     if (step !== "boot") return;
 
+    setBootText("");
+    setProgress(0);
+
     let currentSequenceIndex = 0;
     let currentCharIndex = 0;
     let timeoutId: NodeJS.Timeout;
