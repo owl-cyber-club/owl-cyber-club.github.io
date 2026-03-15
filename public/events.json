@@ -1,35 +1,26 @@
 [
   {
-    "title": "Fall 2025 Kickoff - Game Night",
-    "date": "2025-09-30",
-    "time": "7:00 PM - 8:30 PM",
-    "location": "Engineering & Tech Center - Room 104",
-    "campus": "Marietta",
-    "description": "Welcome to the new semester! Join us for a fun game night to kick off Fall 2025, meet fellow club members, and learn about the amazing activities we have planned.",
-    "type": "Social",
-    "flyer": "2025-09-30-GameNight-Flyer.jpeg"
+    "title": "OWL Cyber Capture the Flag (CTF) Challenge",
+    "date": "2026-04-17",
+    "time": "1:00 PM - 5:00 PM",
+    "location": "Academic Learning Center - Room 1202",
+    "campus": "Kennesaw",
+    "description": "Put your hacking skills to the test in our Spring CTF! Compete against other members in web exploitation, cryptography, reverse engineering, and more.",
+    "type": "Competition",
+    "link": "https://docs.google.com/forms/d/e/1FAIpQLScHzAKDHdAg6TOoxLON0Lw9fhOlA7BVWQbf3SJKkk3NXrF1Qw/viewform?usp=dialog",
+    "linkText": "Register for the CTF",
+    "flyer": "2026-04-17-CTF-Flyer.png"
   },
   {
-    "title": "Connect @ KSU - Spring 2026 Kickoff",
-    "date": "2026-01-27",
-    "time": "5:30 PM - 6:30 PM",
-    "location": "Joe Mack Wilson Student Center - Room 216",
-    "campus": "Marietta",
-    "description": "Come grab some food, chat with the executive board, and learn about our Spring 2026 initiatives, hands-on workshops, and upcoming competitions.",
-    "type": "Social",
-    "flyer": "2026-01-27-ConnectKSU-Flyer.png"
-  },
-  {
-    "title": "Intro to WireShark",
-    "date": "2026-02-16",
+    "title": "Weekly Club Meet",
+    "startDate": "2026-03-24",
+    "endDate": "2026-04-28",
     "time": "5:00 PM - 6:00 PM",
-    "location": "Teams",
-    "campus": "Online",
-    "description": "Learn the basics of network traffic analysis using Wireshark. We will cover packet capturing, filtering, and identifying basic network events. Great for beginners!",
-    "type": "Workshop",
-    "link": "https://teams.microsoft.com/meet/2618977480954?p=bAFv5KgvB8hs5abmtl",
-    "linkText": "Join Teams Meeting",
-    "flyer": "2026-02-16-Wireshark-Flyer.png"
+    "location": "TBD",
+    "campus": "Marietta",
+    "description": "Our regular weekly meet where we hang out and cover a specific topic in cybersecurity or software engineering.",
+    "type": "Club Meet",
+    "series": "weekly"
   },
   {
     "title": "Virtual Cybersec Roadmap with Ashish Ghimire",
@@ -44,26 +35,35 @@
     "flyer": "2026-02-26-CybersecAshish-Flyer.png"
   },
   {
-    "title": "Weekly Club Meet",
-    "startDate": "2026-03-24",
-    "endDate": "2026-04-28",
+    "title": "Intro to WireShark",
+    "date": "2026-02-16",
     "time": "5:00 PM - 6:00 PM",
-    "location": "TBD",
-    "campus": "Marietta",
-    "description": "Our regular weekly meet where we hang out and cover a specific topic in cybersecurity or software engineering.",
-    "type": "Club Meet",
-    "series": "weekly"
+    "location": "Teams",
+    "campus": "Online",
+    "description": "Learn the basics of network traffic analysis using Wireshark. We will cover packet capturing, filtering, and identifying basic network events. Great for beginners!",
+    "type": "Workshop",
+    "link": "https://teams.microsoft.com/meet/2618977480954?p=bAFv5KgvB8hs5abmtl",
+    "linkText": "Join Teams Meeting",
+    "flyer": "2026-02-16-Wireshark-Flyer.png"
   },
   {
-    "title": "OWL Cyber Capture the Flag (CTF) Challenge",
-    "date": "2026-04-17",
-    "time": "1:00 PM - 5:00 PM",
-    "location": "Academic Learning Center - Room 1202",
-    "campus": "Kennesaw",
-    "description": "Put your hacking skills to the test in our Spring CTF! Compete against other members in web exploitation, cryptography, reverse engineering, and more.",
-    "type": "Competition",
-    "link": "https://docs.google.com/forms/d/e/1FAIpQLScHzAKDHdAg6TOoxLON0Lw9fhOlA7BVWQbf3SJKkk3NXrF1Qw/viewform?usp=dialog",
-    "linkText": "Register for the CTF",
-    "flyer": "2026-04-17-CTF-Flyer.png"
+    "title": "Connect @ KSU - Spring 2026 Kickoff",
+    "date": "2026-01-27",
+    "time": "5:30 PM - 6:30 PM",
+    "location": "Joe Mack Wilson Student Center - Room 216",
+    "campus": "Marietta",
+    "description": "Come grab some food, chat with the executive board, and learn about our Spring 2026 initiatives, hands-on workshops, and upcoming competitions.",
+    "type": "Social",
+    "flyer": "2026-01-27-ConnectKSU-Flyer.png"
+  },
+  {
+    "title": "Fall 2025 Kickoff - Game Night",
+    "date": "2025-09-30",
+    "time": "7:00 PM - 8:30 PM",
+    "location": "Engineering & Tech Center - Room 104",
+    "campus": "Marietta",
+    "description": "Welcome to the new semester! Join us for a fun game night to kick off Fall 2025, meet fellow club members, and learn about the amazing activities we have planned.",
+    "type": "Social",
+    "flyer": "2025-09-30-GameNight-Flyer.jpeg"
   }
 ]
