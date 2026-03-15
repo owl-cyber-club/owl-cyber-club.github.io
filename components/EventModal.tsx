@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Calendar as CalendarIcon, MapPin, Clock, Repeat, Ticket } from "lucide-react";
+import { X, ExternalLink, Calendar as CalendarIcon, MapPin, Clock, Repeat, Ticket, ZoomIn } from "lucide-react";
 import { Event } from "../types";
 
 interface EventModalProps {
@@ -19,6 +19,7 @@ export const EventModal: React.FC<EventModalProps> = ({
   hideDateInBody = false,
 }) => {
   const [mounted, setMounted] = useState(false);
+  const [zoomedFlyer, setZoomedFlyer] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -27,7 +28,8 @@ export const EventModal: React.FC<EventModalProps> = ({
   if (!mounted) return null;
 
   return (
-    <AnimatePresence>
+    <>
+      <AnimatePresence>
       {isOpen && events && events.length > 0 && (
         <>
           {/* Backdrop */}
@@ -137,9 +139,21 @@ export const EventModal: React.FC<EventModalProps> = ({
                       )}
 
                       {event.flyer && (
-                        <div className="mt-4 rounded-lg overflow-hidden border border-white/10 max-h-96 flex justify-center bg-black/50">
-                          <img src={`/event-flyers/${event.flyer}`} alt={`${event.title} flyer`} className="max-w-full h-auto max-h-96 object-contain" />
-                        </div>
+                        <button
+                          onClick={() => setZoomedFlyer(`/event-flyers/${event.flyer}`)}
+                          className="mt-4 relative group cursor-pointer w-full rounded-lg overflow-hidden border border-white/10 max-h-96 flex justify-center bg-black/50 transition-colors hover:border-cyber-yellow/50"
+                        >
+                          <img
+                            src={`/event-flyers/${event.flyer}`}
+                            alt={`${event.title} flyer`}
+                            className="max-w-full h-auto max-h-96 object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                            <span className="bg-black/80 px-4 py-2 rounded-full text-white text-sm font-medium flex items-center gap-2 backdrop-blur-md shadow-lg shadow-black/50 border border-white/10">
+                              <ZoomIn className="w-4 h-4 text-cyber-yellow" /> Click to Expand
+                            </span>
+                          </div>
+                        </button>
                       )}
 
                       {event.link && (
@@ -172,6 +186,42 @@ export const EventModal: React.FC<EventModalProps> = ({
           </div>
         </>
       )}
-    </AnimatePresence>
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {zoomedFlyer && (
+          <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setZoomedFlyer(null)}
+              className="absolute inset-0 bg-black/95 backdrop-blur-md cursor-zoom-out"
+            />
+            
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative z-10 max-w-[95vw] max-h-[95vh] flex items-center justify-center pointer-events-none"
+            >
+              <img
+                src={zoomedFlyer}
+                alt="Zoomed Event Flyer"
+                className="max-w-full max-h-[95vh] object-contain rounded-xl shadow-[0_0_100px_rgba(234,179,8,0.15)] pointer-events-auto cursor-default"
+              />
+              
+              <button
+                onClick={() => setZoomedFlyer(null)}
+                className="absolute top-4 right-4 md:-right-16 md:top-0 p-2 rounded-full bg-black/50 text-white hover:text-cyber-yellow hover:bg-white/10 transition-all backdrop-blur-md border border-white/10 pointer-events-auto cursor-pointer"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
