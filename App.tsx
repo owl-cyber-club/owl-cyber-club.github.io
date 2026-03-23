@@ -10,13 +10,17 @@ import { Contact } from "./components/Contact";
 import { ParticleBackground } from "./components/ParticleBackground";
 import IntroAnimation from "./components/IntroAnimation";
 import { CalendarView } from "./components/CalendarView";
+import { GlobalEventDeepLink } from "./components/GlobalEventDeepLink";
 
 function App() {
   const [showIntro, setShowIntro] = useState(() => {
-    // Only show intro if there's no hash or just '#' (user navigated to root)
+    // Only show intro if there's no hash (or just '#') AND no event deep link
     if (typeof window !== "undefined") {
       const hash = window.location.hash;
-      return !hash || hash === "#";
+      const search = window.location.search;
+      const isRoot = !hash || hash === "#";
+      const hasEventLink = new URLSearchParams(search).has("event");
+      return isRoot && !hasEventLink;
     }
     return true; // Fallback for SSR if any
   });
@@ -33,6 +37,7 @@ function App() {
 
   return (
     <div className="bg-black min-h-screen text-white selection:bg-cyber-yellow selection:text-black">
+      <GlobalEventDeepLink />
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
       <ParticleBackground />
       <Navbar onJoinClick={handleJoinClick} />

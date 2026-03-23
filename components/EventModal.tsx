@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Calendar as CalendarIcon, MapPin, Clock, Repeat, Ticket, ZoomIn } from "lucide-react";
+import { X, ExternalLink, Calendar as CalendarIcon, MapPin, Clock, Repeat, Ticket, ZoomIn, Share2, Check } from "lucide-react";
 import { Event } from "../types";
+import { generateEventSlug } from "../utils/slugify";
 
 interface EventModalProps {
   isOpen: boolean;
@@ -20,10 +21,21 @@ export const EventModal: React.FC<EventModalProps> = ({
 }) => {
   const [mounted, setMounted] = useState(false);
   const [zoomedFlyer, setZoomedFlyer] = useState<string | null>(null);
+  const [copiedLink, setCopiedLink] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleShare = (event: Event) => {
+    const slug = generateEventSlug(event.title);
+    const url = `${window.location.origin}${window.location.pathname}?event=${slug}`;
+    navigator.clipboard.writeText(url);
+    setCopiedLink(slug);
+    setTimeout(() => {
+      setCopiedLink(null);
+    }, 2000);
+  };
 
   if (!mounted) return null;
 
@@ -98,7 +110,20 @@ export const EventModal: React.FC<EventModalProps> = ({
                             </span>
                           )}
                         </div>
-                        <h4 className="text-2xl font-bold text-white leading-tight pr-8">{event.title}</h4>
+                        <div className="flex justify-between items-start gap-4">
+                          <h4 className="text-2xl font-bold text-white leading-tight pr-8">{event.title}</h4>
+                          <button
+                            onClick={() => handleShare(event)}
+                            className="text-gray-400 hover:text-cyber-yellow transition-colors group/share shrink-0 mt-1"
+                            title="Copy link to this event"
+                          >
+                            {copiedLink === generateEventSlug(event.title) ? (
+                              <Check size={20} className="text-green-500" />
+                            ) : (
+                              <Share2 size={20} className="group-hover/share:scale-110 transition-transform" />
+                            )}
+                          </button>
+                        </div>
                       </div>
                       
                       <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
