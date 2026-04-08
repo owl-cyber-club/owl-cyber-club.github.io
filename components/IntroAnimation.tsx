@@ -93,7 +93,7 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
   }, [step]);
 
   useEffect(() => {
-    if (!(["boot", "glitch", "logo"] as const).includes(step)) {
+    if (!(["boot", "glitch", "logo", "shrink", "fade"] as const).includes(step)) {
       return;
     }
 

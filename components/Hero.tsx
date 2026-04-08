@@ -11,7 +11,7 @@ export const Hero: React.FC = () => {
   const currentYearStr = todayDate.getFullYear().toString();
 
   const sessionsThisYear = events.filter((e) => {
-    if (e.date === "TBD") return false;
+    if (!e.date || e.date === "TBD") return false;
     return e.date.startsWith(currentYearStr) && e.date <= todayString;
   }).length;
 
