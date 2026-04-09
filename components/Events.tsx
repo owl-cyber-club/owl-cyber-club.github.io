@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useEvents } from "../hooks/useEvents";
 import { EventModal } from "./EventModal";
+import { Tooltip } from "./Tooltip";
 import { Event } from "../types";
 
 interface EventsProps {
@@ -103,7 +104,11 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
                       <div className="flex-1 min-w-0">
                         <h3 className="text-xl font-semibold text-white group-hover:text-cyber-yellow transition-colors leading-tight break-words">
                           <span className="align-middle">{event.title}</span>
-                          <span className="relative inline-block ml-2 align-middle group/icon translate-y-[2px]">
+                          <Tooltip 
+                            content={event.series ? "Recurring Series" : "One-Time Event"}
+                            position="bottom-left"
+                            className="ml-2 align-middle translate-y-[2px]"
+                          >
                             <span className="inline-block text-gray-500 group-hover:text-cyber-yellow/80 transition-all duration-300">
                               {event.series ? (
                                 <Repeat size={18} className="transform-gpu transition-transform duration-[1200ms] ease-in-out group-hover:rotate-[720deg]" />
@@ -114,12 +119,7 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
                                 />
                               )}
                             </span>
-                            <span className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max opacity-0 group-hover/icon:opacity-100 transition-all duration-200 translate-y-1 group-hover/icon:translate-y-0 text-[10px] tracking-wider font-mono font-bold uppercase bg-zinc-950/95 backdrop-blur-md border border-cyber-yellow/40 text-cyber-yellow px-2 md:px-3 py-1.5 rounded flex items-center justify-center z-50 shadow-[0_0_15px_rgba(234,179,8,0.15)]">
-                              {event.series
-                                ? "Recurring Series"
-                                : "One-Time Event"}
-                            </span>
-                          </span>
+                          </Tooltip>
                         </h3>
                         <div className="flex flex-wrap items-center gap-2 mt-1">
                           <span className="inline-block px-2 py-0.5 rounded text-[10px] bg-white/10 text-gray-300 border border-white/5 uppercase tracking-wide">

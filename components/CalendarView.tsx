@@ -13,6 +13,7 @@ import {
 import { useEvents } from "../hooks/useEvents";
 import { Event } from "../types";
 import { EventModal } from "./EventModal";
+import { Tooltip } from "./Tooltip";
 
 interface CalendarViewProps {
   onClose: () => void;
@@ -105,21 +106,25 @@ export const CalendarView: React.FC<CalendarViewProps> = ({ onClose }) => {
 
           <div className="flex flex-col items-end gap-4">
             <div className="flex items-center gap-4 bg-zinc-900/50 p-2 rounded-xl border border-cyber-yellow/20 shadow-[0_0_15px_rgba(234,179,8,0.05)]">
-              <button
-                onClick={prevMonth}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white"
-              >
-                <ChevronLeft size={20} />
-              </button>
+              <Tooltip content="Previous Month" position="top">
+                <button
+                  onClick={prevMonth}
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+              </Tooltip>
               <div className="text-lg font-bold text-white min-w-[150px] text-center">
                 {months[month]} {year}
               </div>
-              <button
-                onClick={nextMonth}
-                className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white"
-              >
-                <ChevronRight size={20} />
-              </button>
+              <Tooltip content="Next Month" position="top">
+                <button
+                  onClick={nextMonth}
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors text-white"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </Tooltip>
             </div>
             {CLUB_EVENTS.some((e) => e.date === "TBD") && (
               <button
