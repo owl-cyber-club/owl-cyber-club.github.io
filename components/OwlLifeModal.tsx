@@ -54,7 +54,7 @@ export const OwlLifeModal: React.FC<OwlLifeModalProps> = ({
                     <span className="text-cyber-yellow">MEMBERSHIP</span>
                   </h3>
                 </div>
-                <Tooltip content="Close" position="bottom">
+                <Tooltip content="Close" position="bottom-right">
                   <button
                     onClick={onClose}
                     className="text-gray-400 hover:text-white transition-colors"

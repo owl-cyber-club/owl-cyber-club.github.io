@@ -3,7 +3,7 @@ import React, { ReactNode } from "react";
 interface TooltipProps {
   content: ReactNode;
   children: ReactNode;
-  position?: "top" | "bottom" | "left" | "right";
+  position?: "top" | "bottom" | "left" | "right" | "top-left" | "top-right" | "bottom-left" | "bottom-right";
   className?: string; // Container classes (e.g. w-full, flex, inline-flex)
   tooltipClassName?: string; // Override tooltip style (e.g. green instead of yellow)
 }
@@ -20,6 +20,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
     bottom: "top-full left-1/2 -translate-x-1/2 mt-2 origin-top",
     left: "right-full top-1/2 -translate-y-1/2 mr-2 origin-right",
     right: "left-full top-1/2 -translate-y-1/2 ml-2 origin-left",
+    "top-left": "bottom-full left-0 mb-2 origin-bottom-left",
+    "top-right": "bottom-full right-0 mb-2 origin-bottom-right",
+    "bottom-left": "top-full left-0 mt-2 origin-top-left",
+    "bottom-right": "top-full right-0 mt-2 origin-top-right",
   };
 
   const transformHoverClasses = {
@@ -27,6 +31,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
     bottom: "translate-y-1 group-hover/tooltip:translate-y-0",
     left: "-translate-x-1 group-hover/tooltip:translate-x-0",
     right: "translate-x-1 group-hover/tooltip:translate-x-0",
+    "top-left": "-translate-y-1 group-hover/tooltip:translate-y-0",
+    "top-right": "-translate-y-1 group-hover/tooltip:translate-y-0",
+    "bottom-left": "translate-y-1 group-hover/tooltip:translate-y-0",
+    "bottom-right": "translate-y-1 group-hover/tooltip:translate-y-0",
   };
 
   return (

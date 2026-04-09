@@ -82,7 +82,7 @@ export const EventModal: React.FC<EventModalProps> = ({
                     {title}
                   </h3>
                 </div>
-                <Tooltip content="Close" position="bottom" className="shrink-0">
+                <Tooltip content="Close" position="bottom-right" className="shrink-0">
                   <button
                     onClick={onClose}
                     className="text-gray-400 hover:text-white transition-colors"
@@ -99,7 +99,7 @@ export const EventModal: React.FC<EventModalProps> = ({
                     <div key={idx} className="space-y-4 pb-6 last:pb-0 border-b last:border-0 border-white/5">
                       <div>
                         <div className="flex items-center gap-2 mb-2">
-                          <Tooltip content={event.series ? "Recurring Series" : "One-Time Event"} className="cursor-help translate-y-[1px]" position="bottom">
+                          <Tooltip content={event.series ? "Recurring Series" : "One-Time Event"} className="cursor-help translate-y-[1px]" position="bottom-left">
                             <span className="inline-block text-gray-500 hover:text-cyber-yellow/80 transition-colors">
                               {event.series ? <Repeat size={16} className="transform-gpu" /> : <Ticket size={16} className="-rotate-[18deg] transform-gpu backface-hidden" />}
                             </span>
@@ -112,7 +112,7 @@ export const EventModal: React.FC<EventModalProps> = ({
                         </div>
                         <div className="flex justify-between items-start gap-4">
                           <h4 className="text-2xl font-bold text-white leading-tight pr-8">{event.title}</h4>
-                          <Tooltip content={copiedLink === generateEventSlug(event.title) ? "" : "Copy link to this event"}>
+                          <Tooltip content={copiedLink === generateEventSlug(event.title) ? "" : "Copy link to this event"} position="bottom-right">
                             <button
                               onClick={() => handleShare(event)}
                               className="text-gray-400 hover:text-cyber-yellow transition-colors group/share shrink-0 mt-1 relative flex items-center justify-center"
@@ -247,7 +247,7 @@ export const EventModal: React.FC<EventModalProps> = ({
                 className="max-w-full max-h-[95vh] object-contain rounded-xl shadow-[0_0_100px_rgba(234,179,8,0.15)] pointer-events-auto cursor-default"
               />
               
-              <Tooltip content="Close Flyer" position="bottom" className="absolute top-4 right-4 md:-right-16 md:top-0 z-[160]">
+              <Tooltip content="Close Flyer" position="bottom-right" className="absolute top-4 right-4 md:-right-16 md:top-0 z-[160]">
                 <button
                   onClick={() => setZoomedFlyer(null)}
                   className="p-2 rounded-full bg-black/50 text-white hover:text-cyber-yellow hover:bg-white/10 transition-all backdrop-blur-md border border-white/10 pointer-events-auto cursor-pointer"

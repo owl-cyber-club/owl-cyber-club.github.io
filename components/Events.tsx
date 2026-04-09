@@ -106,7 +106,7 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
                           <span className="align-middle">{event.title}</span>
                           <Tooltip 
                             content={event.series ? "Recurring Series" : "One-Time Event"}
-                            position="bottom"
+                            position="bottom-left"
                             className="ml-2 align-middle translate-y-[2px]"
                           >
                             <span className="inline-block text-gray-500 group-hover:text-cyber-yellow/80 transition-all duration-300">
