@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Tooltip } from "./Tooltip";
 
 const sequences = [
   { text: "INITIALIZING OWL_SYSTEM_PROTOCOL...", success: "[OK]" },
@@ -277,18 +278,19 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
       >
         {showSkipButton &&
           (step === "boot" || step === "glitch" || step === "logo") && (
-            <motion.button
-              type="button"
-              onClick={skipIntro}
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="absolute top-4 left-4 sm:top-6 sm:left-6 z-[120] px-3 py-1.5 rounded border border-cyber-yellow/60 bg-black/70 text-cyber-yellow font-mono text-xs sm:text-sm tracking-wide hover:bg-cyber-yellow hover:text-black transition-colors"
-              aria-label="Skip intro animation"
-              title="Skip intro (Esc)"
-            >
-              ESC • SKIP
-            </motion.button>
+            <Tooltip content="Skip intro (Esc)" position="right" className="absolute top-4 left-4 sm:top-6 sm:left-6 z-[120]">
+              <motion.button
+                type="button"
+                onClick={skipIntro}
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="px-3 py-1.5 rounded border border-cyber-yellow/60 bg-black/70 text-cyber-yellow font-mono text-xs sm:text-sm tracking-wide hover:bg-cyber-yellow hover:text-black transition-colors"
+                aria-label="Skip intro animation"
+              >
+                ESC • SKIP
+              </motion.button>
+            </Tooltip>
           )}
         {/* Matrix/Glitch Background Effect - Optional subtle grid */}
         <div

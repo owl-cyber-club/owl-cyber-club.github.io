@@ -1,6 +1,7 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, ShieldCheck } from "lucide-react";
+import { Tooltip } from "./Tooltip";
 
 interface OwlLifeModalProps {
   isOpen: boolean;
@@ -53,12 +54,14 @@ export const OwlLifeModal: React.FC<OwlLifeModalProps> = ({
                     <span className="text-cyber-yellow">MEMBERSHIP</span>
                   </h3>
                 </div>
-                <button
-                  onClick={onClose}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <X className="w-6 h-6" />
-                </button>
+                <Tooltip content="Close" position="bottom">
+                  <button
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </Tooltip>
               </div>
 
               {/* Content */}
