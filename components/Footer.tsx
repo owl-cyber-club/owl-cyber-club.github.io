@@ -171,7 +171,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        {/* OwlLife Official Registration Button */}
+        {/* Suitable Official Registration Button */}
         <motion.button
           onClick={() => setIsOwlLifeModalOpen(true)}
           animate={
@@ -226,7 +226,7 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
           <div className="text-left">
             <div className="font-mono text-white group-hover:text-black transition-colors">
-              <b>Register</b> on OwlLife!
+              <b>Register</b> on Suitable!
             </div>
           </div>
         </motion.button>
