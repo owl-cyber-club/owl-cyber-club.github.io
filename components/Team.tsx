@@ -2,7 +2,17 @@ import React from "react";
 import { Card } from "./ui/Card";
 import { Github, Twitter, Linkedin } from "lucide-react";
 
-const TEAM_MEMBERS = [
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  github?: string;
+  linkedin?: string;
+  imageClassName?: string;
+  imageStyle?: React.CSSProperties;
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Amrut Ramasamy",
     role: "President",
@@ -18,25 +28,27 @@ const TEAM_MEMBERS = [
     linkedin: "https://www.linkedin.com/in/lisa-thiongo-b0b173240/",
   },
   {
-    name: "Sanketh Chapaneri",
+    name: "Joseph Alele",
     role: "Secretary",
-    image: "/profile-images/sanketh.jpg",
-    github: "https://github.com/DoNotDisturbs",
-    linkedin: "https://www.linkedin.com/in/sanketh-chapaneri-a285761b8/",
+    image: "/profile-images/josephalele.jpg",
+    linkedin: "https://www.linkedin.com/in/joseph-alele-596ba92a5/",
+    imageClassName: "object-top",
+    imageStyle: { objectPosition: "center top" },
   },
   {
-    name: "Christopher Forrester-Jack",
+    name: "Tj Taylor",
     role: "Reservation Delegate",
-    image: "/profile-images/CFJ.png",
-    github: "https://github.com/CFJ200",
-    linkedin: "https://www.linkedin.com/in/christopherforrester-jack/",
+    image: "/profile-images/tjtaylor.jpg",
+    linkedin: "https://www.linkedin.com/in/tj-taylor-1615a6120/",
+    imageStyle: { transform: "scale(1.18)", transformOrigin: "60% 40%" },
   },
   {
-    name: "Cassidie Grogan",
+    name: "Nolan Marshall",
     role: "Treasurer",
-    image: "/profile-images/Cassidie.png",
-    github: "https://github.com/CGrogan4",
-    linkedin: "https://www.linkedin.com/in/cassidie-grogan-62134127a/",
+    image: "/profile-images/nolanmarshall.jpg",
+    linkedin: "https://www.linkedin.com/in/nolan-marshall-54783a275/",
+    imageClassName: "object-top",
+    imageStyle: { objectPosition: "center top" },
   },
   {
     name: "Dr. Manohar Raavi",
@@ -68,7 +80,8 @@ export const Team: React.FC = () => {
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                  className={`w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 ${member.imageClassName || ""}`}
+                  style={member.imageStyle}
                 />
               </div>
               <h3 className="text-lg font-semibold text-white">
