@@ -6,15 +6,17 @@ const NAV_LINKS = [
   { name: "About", href: "#about" },
   { name: "Events", href: "#events" },
   { name: "Staff", href: "#staff" },
+  { name: "Gallery", href: "#gallery" },
   { name: "Contact", href: "#contact" },
   { name: "Join", href: "#join" },
 ];
 
 interface NavbarProps {
   onJoinClick?: () => void;
+  onViewGallery?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onJoinClick, onViewGallery }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -53,6 +55,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => {
+                if (link.name === "Gallery" && onViewGallery) {
+                  e.preventDefault();
+                  onViewGallery();
+                }
+              }}
               className="text-sm font-medium text-gray-400 hover:text-white transition-colors relative group"
             >
               {link.name}
@@ -87,7 +95,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onJoinClick }) => {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => {
+                onClick={(e) => {
+                  if (link.name === "Gallery" && onViewGallery) {
+                    e.preventDefault();
+                    onViewGallery();
+                    setMobileMenuOpen(false);
+                    return;
+                  }
                   if (link.name === "Join" && onJoinClick) {
                     onJoinClick();
                   }

@@ -10,6 +10,7 @@ import { Contact } from "./components/Contact";
 import { ParticleBackground } from "./components/ParticleBackground";
 import IntroAnimation from "./components/IntroAnimation";
 import { CalendarView } from "./components/CalendarView";
+import { GalleryView } from "./components/GalleryView";
 import { GlobalEventDeepLink } from "./components/GlobalEventDeepLink";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
     return true; // Fallback for SSR if any
   });
   const [showCalendar, setShowCalendar] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
   const [highlightJoinLinks, setHighlightJoinLinks] = useState(false);
 
   const handleJoinClick = () => {
@@ -40,7 +42,7 @@ function App() {
       <GlobalEventDeepLink />
       {showIntro && <IntroAnimation onComplete={() => setShowIntro(false)} />}
       <ParticleBackground />
-      <Navbar onJoinClick={handleJoinClick} />
+      <Navbar onJoinClick={handleJoinClick} onViewGallery={() => setShowGallery(true)} />
       <main>
         <Hero />
         <Features />
@@ -53,6 +55,9 @@ function App() {
       <AnimatePresence>
         {showCalendar && (
           <CalendarView onClose={() => setShowCalendar(false)} />
+        )}
+        {showGallery && (
+          <GalleryView onClose={() => setShowGallery(false)} />
         )}
       </AnimatePresence>
     </div>

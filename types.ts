@@ -24,3 +24,19 @@ export interface Event {
   linkText?: string;
   flyer?: string;
 }
+
+export interface Photo {
+  id: string;
+  url: string;
+  thumbnail: string;
+  caption?: string;
+}
+
+export interface Album {
+  id: string;
+  title: string;
+  date: string;
+  coverPhoto: string;
+  photos: Photo[];
+  eventId?: string;
+}
