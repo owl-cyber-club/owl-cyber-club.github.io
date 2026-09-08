@@ -1,5 +1,25 @@
 [
   {
+    "title": "Weekly Club Meet",
+    "startDate": "2026-09-16",
+    "endDate": "2026-12-16",
+    "time": "6:00 PM - 7:00 PM",
+    "location": "Room TBD",
+    "campus": "Marietta",
+    "description": "For the Fall 2026 semester, we meet every Wednesday at 6:00 PM starting September 16th! Our sessions will be varied, featuring guest speakers, hands-on cybersecurity workshops with TryHackMe and other platforms, CTF practice, and skill-building activities. Exact room location on the Marietta campus will be announced soon.",
+    "type": "Club Meet",
+    "series": "weekly"
+  },
+  {
+    "title": "College of Computing Student Community Day",
+    "date": "2026-09-09",
+    "time": "1:00 PM - 3:00 PM",
+    "location": "Joe Mack Wilson Student Center Ballrooms",
+    "campus": "Marietta",
+    "description": "Join OWL Cyber Club at the College of Computing & Software Engineering (CCSE) Fall 2026 Student Community Day! The overall event runs from 11:30 AM to 3:00 PM with lunch and student org networking. Our club officers will be tabling from 1:00 PM to 3:00 PM to chat, network, and share all the exciting workshops and activities we have planned for this semester.",
+    "type": "Social"
+  },
+  {
     "title": "OWL Cyber Capture the Flag (CTF) Challenge",
     "date": "2026-04-17",
     "time": "1:00 PM - 5:00 PM",
