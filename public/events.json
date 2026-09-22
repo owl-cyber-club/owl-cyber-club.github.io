@@ -11,6 +11,16 @@
     "series": "weekly"
   },
   {
+    "title": "First OWL Cyber Club Meeting of Fall 2026",
+    "date": "2026-09-23",
+    "time": "5:30 PM - 6:30 PM",
+    "location": "Joe Mack Wilson Student Center - Room A-216",
+    "campus": "Marietta",
+    "description": "Join us for our first club meeting of the Fall 2026 semester! It will be a fun get-together to talk about what we have planned for this semester, meet fellow members, and go over Capture the Flags (CTFs).",
+    "type": "Club Meet",
+    "flyer": "2026-09-23-Fall-26-First-Club-Meet.jpg"
+  },
+  {
     "title": "College of Computing Student Community Day",
     "date": "2026-09-09",
     "time": "1:00 PM - 3:00 PM",
