@@ -12,24 +12,24 @@ export const GlobalEventDeepLink: React.FC = () => {
     if (loading || !events.length) return;
     const params = new URLSearchParams(window.location.search);
     const eventSlug = params.get("event");
-    
+
     if (eventSlug) {
       // Find the best match, prioritize exact slug matches
       const foundEvents = events.filter((e) => generateEventSlug(e.title) === eventSlug);
-      
+
       if (foundEvents.length > 0) {
         // If it's a series, try to find an upcoming instance
         const todayDate = new Date();
         const todayString = `${todayDate.getFullYear()}-${String(todayDate.getMonth() + 1).padStart(2, "0")}-${String(todayDate.getDate()).padStart(2, "0")}`;
-        
+
         let bestMatch = foundEvents[0];
         const upcomingMatch = foundEvents.find(e => {
-            const eDate = e.date || "TBD";
-            return eDate === "TBD" || eDate >= todayString;
+          const eDate = e.date || "TBD";
+          return eDate === "TBD" || eDate >= todayString;
         });
 
         if (upcomingMatch) {
-            bestMatch = upcomingMatch;
+          bestMatch = upcomingMatch;
         }
 
         setSelectedEvents([bestMatch]);

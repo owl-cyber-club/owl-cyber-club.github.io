@@ -36,10 +36,9 @@ export const Footer: React.FC<FooterProps> = ({
             className={`
               relative h-[88px] border rounded-xl px-4 py-2 flex flex-col justify-end
               transition-all duration-500
-              ${
-                highlightJoinLinks
-                  ? "border-cyber-yellow bg-cyber-yellow/10 shadow-[0_0_30px_rgba(234,179,8,0.6)] animate-pulse"
-                  : "border-cyber-yellow bg-white/5"
+              ${highlightJoinLinks
+                ? "border-cyber-yellow bg-cyber-yellow/10 shadow-[0_0_30px_rgba(234,179,8,0.6)] animate-pulse"
+                : "border-cyber-yellow bg-white/5"
               }
             `}
           >
@@ -177,26 +176,25 @@ export const Footer: React.FC<FooterProps> = ({
           animate={
             highlightJoinLinks
               ? {
-                  x: [0, -1.5, 1.5, -1, 1, 0],
-                  rotate: [0, -0.6, 0.6, -0.25, 0.25, 0],
-                }
+                x: [0, -1.5, 1.5, -1, 1, 0],
+                rotate: [0, -0.6, 0.6, -0.25, 0.25, 0],
+              }
               : { x: 0, rotate: 0 }
           }
           transition={
             highlightJoinLinks
               ? {
-                  duration: 0.45,
-                  ease: "easeInOut",
-                  repeat: 2,
-                  repeatDelay: 0.6,
-                }
+                duration: 0.45,
+                ease: "easeInOut",
+                repeat: 2,
+                repeatDelay: 0.6,
+              }
               : { duration: 0.2 }
           }
-          className={`group relative order-2 h-[88px] px-6 py-3 border rounded-xl flex items-center gap-3 transition-all duration-300 overflow-hidden xl:order-3 xl:col-start-3 xl:justify-self-end ${
-            highlightJoinLinks
+          className={`group relative order-2 h-[88px] px-6 py-3 border rounded-xl flex items-center gap-3 transition-all duration-300 overflow-hidden xl:order-3 xl:col-start-3 xl:justify-self-end ${highlightJoinLinks
               ? "bg-cyber-yellow/20 border-cyber-yellow shadow-[0_0_30px_rgba(234,179,8,0.5)]"
               : "bg-cyber-yellow/10 border-cyber-yellow shadow-[0_0_20px_rgba(234,179,8,0.1)] hover:bg-cyber-yellow hover:shadow-[0_0_30px_rgba(234,179,8,0.4)]"
-          }`}
+            }`}
         >
           {highlightJoinLinks && (
             <>

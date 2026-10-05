@@ -104,7 +104,7 @@ export const Events: React.FC<EventsProps> = ({ onViewCalendar }) => {
                       <div className="flex-1 min-w-0">
                         <h3 className="text-xl font-semibold text-white group-hover:text-cyber-yellow transition-colors leading-tight break-words">
                           <span className="align-middle">{event.title}</span>
-                          <Tooltip 
+                          <Tooltip
                             content={event.series ? "Recurring Series" : "One-Time Event"}
                             position="bottom-left"
                             className="ml-2 align-middle translate-y-[2px]"

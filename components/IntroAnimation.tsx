@@ -67,15 +67,15 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
         if (currentSequenceIndex === sequences.length - 1) {
           setThemeColor("green"); // Turn green the millisecond ACCESS GRANTED is printed
         }
-        
+
         const successMsg = " " + currentSequence.success + "\n";
         setBootText((prev) => prev + successMsg);
         charsTyped += successMsg.length;
         setProgress((charsTyped / totalChars) * 100);
-        
+
         currentSequenceIndex++;
         currentCharIndex = 0;
-        
+
         if (currentSequenceIndex >= sequences.length) {
           // Finished the last line!
           setProgress(100);
@@ -342,21 +342,20 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                       return (
                         <motion.span
                           key={index}
-                          className={`h-full flex-1 rounded-[2px] transition-colors duration-500 ${
-                            isFilled 
+                          className={`h-full flex-1 rounded-[2px] transition-colors duration-500 ${isFilled
                               ? themeColor === "red" ? "bg-red-500" : "bg-green-500"
                               : "bg-[#2f2f2f]"
-                          }`}
+                            }`}
                           animate={
                             isFilled
                               ? {
-                                  opacity: [0.72, 1, 0.8],
-                                  boxShadow: [
-                                    "0 0 0px rgba(0,0,0,0)",
-                                    `0 0 8px ${themeColor === "red" ? "rgba(239,68,68,0.55)" : "rgba(34,197,94,0.55)"}`,
-                                    `0 0 2px ${themeColor === "red" ? "rgba(239,68,68,0.25)" : "rgba(34,197,94,0.25)"}`,
-                                  ],
-                                }
+                                opacity: [0.72, 1, 0.8],
+                                boxShadow: [
+                                  "0 0 0px rgba(0,0,0,0)",
+                                  `0 0 8px ${themeColor === "red" ? "rgba(239,68,68,0.55)" : "rgba(34,197,94,0.55)"}`,
+                                  `0 0 2px ${themeColor === "red" ? "rgba(239,68,68,0.25)" : "rgba(34,197,94,0.25)"}`,
+                                ],
+                              }
                               : { opacity: 0.35, boxShadow: "none" }
                           }
                           transition={{ duration: 0.45, ease: "linear" }}
@@ -377,21 +376,21 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
             step === "logo" ||
             step === "shrink" ||
             step === "fade") && (
-            <>
-              {/* Logo Wrapper with Absolute Positioning for smooth transition */}
-              <motion.div
-                initial={{
-                  top: "50%",
-                  left: "50%",
-                  x: "-50%",
-                  y: "-50%",
-                  scale: 0.8,
-                  opacity: 0,
-                  position: "fixed",
-                }}
-                animate={
-                  step === "shrink" || step === "fade"
-                    ? {
+              <>
+                {/* Logo Wrapper with Absolute Positioning for smooth transition */}
+                <motion.div
+                  initial={{
+                    top: "50%",
+                    left: "50%",
+                    x: "-50%",
+                    y: "-50%",
+                    scale: 0.8,
+                    opacity: 0,
+                    position: "fixed",
+                  }}
+                  animate={
+                    step === "shrink" || step === "fade"
+                      ? {
                         top: "1.25rem", // 20px (centered in 80px navbar)
                         left: navbarLogoLeft, // Handles mobile padding and centered container logic
                         x: "0%",
@@ -404,7 +403,7 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                         // Let's keep opacity 1 until the very end, or fade it out as the bg fades to reveal the static navbar?
                         // Let's fade it out so the real navbar takes over.
                       }
-                    : {
+                      : {
                         top: "50%",
                         left: "50%",
                         x: "-50%",
@@ -412,106 +411,106 @@ export const IntroAnimation: React.FC<IntroAnimationProps> = ({
                         scale: 1,
                         opacity: 1,
                       }
-                }
-                transition={{
-                  duration: 0.8, // Faster: reduced from 1.5s to 0.8s
-                  ease: "easeInOut",
-                }}
-                className="z-50"
-                style={{ position: "fixed" }}
-              >
-                {/* The Logo Container */}
-                <motion.div
-                  className="relative group"
-                  animate={step === "logo" ? "glow" : "initial"}
-                  variants={{
-                    initial: {
-                      filter: "drop-shadow(0 0 0px rgba(255, 215, 0, 0))",
-                    },
-                    glow: {
-                      filter: [
-                        "drop-shadow(0 0 0px rgba(255, 215, 0, 0))",
-                        "drop-shadow(0 0 20px rgba(255, 215, 0, 0.5))",
-                        "drop-shadow(0 0 50px rgba(255, 215, 0, 0.8))",
-                        "drop-shadow(0 0 20px rgba(255, 215, 0, 0.5))",
-                      ],
-                      transition: {
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                      },
-                    },
+                  }
+                  transition={{
+                    duration: 0.8, // Faster: reduced from 1.5s to 0.8s
+                    ease: "easeInOut",
                   }}
+                  className="z-50"
+                  style={{ position: "fixed" }}
                 >
-                  {/* Glow Effect Element (Background) */}
+                  {/* The Logo Container */}
                   <motion.div
-                    className="absolute inset-0 rounded-full blur-xl bg-cyber-yellow/40"
-                    animate={
-                      step === "logo"
-                        ? {
+                    className="relative group"
+                    animate={step === "logo" ? "glow" : "initial"}
+                    variants={{
+                      initial: {
+                        filter: "drop-shadow(0 0 0px rgba(255, 215, 0, 0))",
+                      },
+                      glow: {
+                        filter: [
+                          "drop-shadow(0 0 0px rgba(255, 215, 0, 0))",
+                          "drop-shadow(0 0 20px rgba(255, 215, 0, 0.5))",
+                          "drop-shadow(0 0 50px rgba(255, 215, 0, 0.8))",
+                          "drop-shadow(0 0 20px rgba(255, 215, 0, 0.5))",
+                        ],
+                        transition: {
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                        },
+                      },
+                    }}
+                  >
+                    {/* Glow Effect Element (Background) */}
+                    <motion.div
+                      className="absolute inset-0 rounded-full blur-xl bg-cyber-yellow/40"
+                      animate={
+                        step === "logo"
+                          ? {
                             scale: [1, 1.2, 1],
                             opacity: [0.5, 0.8, 0.5],
                           }
-                        : { opacity: 0 }
-                    }
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  />
-                  <motion.img
-                    src="/logo.png"
-                    alt="Owl Cyber Club"
-                    className="block object-contain rounded-full relative z-20"
-                    animate={{
-                      width:
-                        step === "shrink" || step === "fade"
-                          ? "2.5rem"
-                          : introLogoSize,
-                      height:
-                        step === "shrink" || step === "fade"
-                          ? "2.5rem"
-                          : introLogoSize,
-                      filter:
-                        step === "logo" || step === "glitch"
-                          ? [
+                          : { opacity: 0 }
+                      }
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    <motion.img
+                      src="/logo.png"
+                      alt="Owl Cyber Club"
+                      className="block object-contain rounded-full relative z-20"
+                      animate={{
+                        width:
+                          step === "shrink" || step === "fade"
+                            ? "2.5rem"
+                            : introLogoSize,
+                        height:
+                          step === "shrink" || step === "fade"
+                            ? "2.5rem"
+                            : introLogoSize,
+                        filter:
+                          step === "logo" || step === "glitch"
+                            ? [
                               "contrast(1) brightness(1)",
                               "contrast(1.35) brightness(1.18)",
                               "contrast(1.05) brightness(1.03)",
                             ]
-                          : "contrast(1) brightness(1)",
-                    }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                  />
+                            : "contrast(1) brightness(1)",
+                      }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                    />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
 
-              {/* Text Glitch Effect appearing below logo during glitch step */}
-              {step === "glitch" && (
-                <motion.div
-                  className="fixed z-40"
-                  initial={{
-                    top: "calc(50% + 10rem)",
-                    left: "50%",
-                    x: "-50%", // Center using Framer Motion's x property
-                    opacity: 0,
-                    y: -20,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    x: "-50%", // Keep centered during animation
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h1 className="text-4xl md:text-6xl font-bold font-mono tracking-wider text-white relative whitespace-nowrap">
-                    <span className="text-cyber-yellow">{glitchText}</span>
-                  </h1>
-                </motion.div>
-              )}
-            </>
-          )}
+                {/* Text Glitch Effect appearing below logo during glitch step */}
+                {step === "glitch" && (
+                  <motion.div
+                    className="fixed z-40"
+                    initial={{
+                      top: "calc(50% + 10rem)",
+                      left: "50%",
+                      x: "-50%", // Center using Framer Motion's x property
+                      opacity: 0,
+                      y: -20,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      x: "-50%", // Keep centered during animation
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h1 className="text-4xl md:text-6xl font-bold font-mono tracking-wider text-white relative whitespace-nowrap">
+                      <span className="text-cyber-yellow">{glitchText}</span>
+                    </h1>
+                  </motion.div>
+                )}
+              </>
+            )}
         </div>
       </motion.div>
     </AnimatePresence>

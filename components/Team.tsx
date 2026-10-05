@@ -50,12 +50,14 @@ const TEAM_MEMBERS: TeamMember[] = [
     imageClassName: "object-top",
     imageStyle: { objectPosition: "center top" },
   },
+  /*
   {
     name: "Dr. Manohar Raavi",
     role: "Advisor",
     image: "/profile-images/ManoharRaavi.png",
     linkedin: "https://www.linkedin.com/in/manohar-raavi-8569a789/",
   },
+  */
 ];
 
 export const Team: React.FC = () => {

@@ -49,7 +49,7 @@ function App() {
         <Contact onViewCalendar={() => setShowCalendar(true)} />
       </main>
       <Footer highlightJoinLinks={highlightJoinLinks} />
-      
+
       <AnimatePresence>
         {showCalendar && (
           <CalendarView onClose={() => setShowCalendar(false)} />
