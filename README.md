@@ -1,6 +1,6 @@
-# Owl Cyber Club Website
+# OWL Cyber Club Website
 
-Welcome to the repository for the Owl Cyber Club website!
+Welcome to the repository for the OWL Cyber Club website!
 
 ## Run Locally
 
